@@ -228,6 +228,9 @@ export function sanitizeObject<T extends Record<string, any>>(
  * Sanitize socket event data
  * Main entry point for socket handlers
  * 
+ * CRITICAL: WebRTC data (offer, answer, candidate) must NOT be sanitized
+ * as it contains browser-generated SDP with newlines that must be preserved.
+ * 
  * @param data - Raw socket event data
  * @returns Sanitized data
  */
@@ -238,26 +241,48 @@ export function sanitizeSocketData<T extends Record<string, any>>(data: T): T {
   }
 
   try {
-    const sanitized = sanitizeObject(data);
+    // Create a shallow copy to avoid mutating original
+    const sanitized: any = {};
 
-    // Additional validation for common fields
+    // CRITICAL FIX: Preserve WebRTC data as-is (browser-generated, not user input)
+    const webrtcFields = ['offer', 'answer', 'candidate'];
+
+    for (const [key, value] of Object.entries(data)) {
+      // Skip sanitization for WebRTC fields - they're browser-generated, not user input
+      if (webrtcFields.includes(key)) {
+        sanitized[key] = value; // Preserve exactly as-is (with newlines in SDP)
+      } 
+      // Sanitize user input fields
+      else if (typeof value === 'string') {
+        sanitized[key] = sanitizeString(value);
+      } 
+      // Recursively sanitize nested objects (but not WebRTC data)
+      else if (typeof value === 'object' && value !== null) {
+        sanitized[key] = sanitizeObject(value);
+      } 
+      else {
+        sanitized[key] = value;
+      }
+    }
+
+    // Additional validation for common user input fields
     if ('targetExtension' in sanitized && typeof sanitized.targetExtension === 'string') {
-      (sanitized as any).targetExtension = sanitizeExtension(sanitized.targetExtension);
+      sanitized.targetExtension = sanitizeExtension(sanitized.targetExtension);
     }
 
     if ('callerExtension' in sanitized && typeof sanitized.callerExtension === 'string') {
-      (sanitized as any).callerExtension = sanitizeExtension(sanitized.callerExtension);
+      sanitized.callerExtension = sanitizeExtension(sanitized.callerExtension);
     }
 
     if ('calleeExtension' in sanitized && typeof sanitized.calleeExtension === 'string') {
-      (sanitized as any).calleeExtension = sanitizeExtension(sanitized.calleeExtension);
+      sanitized.calleeExtension = sanitizeExtension(sanitized.calleeExtension);
     }
 
     if ('username' in sanitized && typeof sanitized.username === 'string') {
-      (sanitized as any).username = sanitizeUsername(sanitized.username);
+      sanitized.username = sanitizeUsername(sanitized.username);
     }
 
-    return sanitized;
+    return sanitized as T;
   } catch (error) {
     console.error('❌ Error sanitizing socket data:', error);
     return {} as T;

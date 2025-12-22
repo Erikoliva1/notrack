@@ -129,13 +129,21 @@ export default function SecureTerminal() {
   }, []);
 
   // Ringtone functions
-  const startRingtone = useCallback(() => {
+  const startRingtone = useCallback(async () => {
     try {
       if (!audioContextRef.current) {
         audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
       }
 
       const audioContext = audioContextRef.current;
+      
+      // CRITICAL FIX: Resume AudioContext if suspended (browser policy)
+      // Chrome blocks autoplay audio until user interaction
+      if (audioContext.state === 'suspended') {
+        await audioContext.resume();
+        console.log('✅ AudioContext resumed for ringtone');
+      }
+
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
       
@@ -353,6 +361,17 @@ export default function SecureTerminal() {
   const handleAcceptCall = async () => {
     if (incomingCall && socket) {
       stopRingtone();
+      
+      // CRITICAL FIX: Resume AudioContext (browser policy compliance)
+      // Browser requires user gesture to play audio
+      if (audioContextRef.current?.state === 'suspended') {
+        try {
+          await audioContextRef.current.resume();
+          console.log('✅ AudioContext resumed after user interaction');
+        } catch (error) {
+          console.warn('⚠️ Could not resume AudioContext:', error);
+        }
+      }
       
       try {
         setCallState('CONNECTED');
