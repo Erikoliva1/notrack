@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+
+# Server
+app/server/.env
+server/.env
+server/cert/*.key
+server/cert/*.crt
+server/cert/*.pem
+app/server/cert/*.key
+app/server/cert/*.crt
+app/server/cert/*.pem
+server/dist/
+app/server/dist/
+server/npm-debug.log
+server/yarn-error.log
+
+# Client
+app/client/.env
+client/.env
+client/dist/
+app/client/dist/
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
+app/client/.env.local
+app/client/.env.development.local
+app/client/.env.test.local
+app/client/.env.production.local
+client/npm-debug.log
+client/yarn-error.log
+
+# Build outputs
+dist/
+build/
+
+# Testing & Coverage
+coverage/
+**/coverage/
+.nyc_output
+*.lcov
+app/client/coverage/
+app/server/coverage/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Miscellaneous
+*.swp
+.history
+.cache
+
+# Exceptions (files to keep)
+!server/cert/.gitkeep
+!app/server/cert/.gitkeep

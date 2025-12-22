@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - NoTrack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* CRT Scanline Effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .error-icon::before {
+            content: '⚠';
+            font-size: 120px;
+            color: #ff0055;
+            animation: pulse 2s ease-in-out infinite;
+            text-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055;
+        }
+
+        .error-code {
+            font-size: 96px;
+            font-weight: bold;
+            color: #ff0055;
+            margin-bottom: 20px;
+            letter-spacing: 0.3em;
+            text-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055, 0 0 60px #ff0055;
+            animation: glitch 3s infinite;
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff0055;
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+        }
+
+        .error-box {
+            background-color: #000000;
+            border: 2px solid #ff0055;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3), inset 0 0 20px rgba(255, 0, 85, 0.1);
+        }
+
+        .error-message {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+
+        .error-details {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .error-details div {
+            margin: 5px 0;
+        }
+
+        .suggestions {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid #ff0055;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .suggestions h3 {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #ff0055;
+        }
+
+        .suggestions ul {
+            list-style: none;
+            font-size: 12px;
+            opacity: 0.75;
+        }
+
+        .suggestions li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .suggestions li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+        }
+
+        .retry-button {
+            background-color: #000000;
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 20px 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .retry-button:hover {
+            background-color: #00ff41;
+            color: #000000;
+            text-shadow: none;
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.6);
+        }
+
+        .home-button {
+            background-color: #000000;
+            border: 2px solid #ff0055;
+            color: #ff0055;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 20px 10px;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+        }
+
+        .home-button:hover {
+            background-color: #ff0055;
+            color: #000000;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.6);
+        }
+
+        .status-bar {
+            margin-top: 40px;
+            font-size: 11px;
+            opacity: 0.5;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ff0055;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { text-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055, 0 0 60px #ff0055; }
+            91%, 95% { text-shadow: 2px 0 0 #00ffff, -2px 0 0 #ff0055; }
+            96%, 98% { text-shadow: -2px 0 0 #00ffff, 2px 0 0 #ff0055; }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 64px;
+            }
+
+            .error-title {
+                font-size: 24px;
+            }
+
+            .error-box {
+                padding: 20px;
+            }
+
+            .retry-button, .home-button {
+                padding: 12px 30px;
+                font-size: 14px;
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Error Icon -->
+        <div class="error-icon"></div>
+
+        <!-- Error Code -->
+        <div class="error-code">50x</div>
+
+        <!-- Error Title -->
+        <div class="error-title">[CRITICAL_SYSTEM_FAILURE]</div>
+
+        <!-- Error Message -->
+        <div class="error-box">
+            <div class="error-message">
+                A critical server error has occurred. Our secure communication infrastructure
+                <br>
+                is temporarily unavailable due to an internal system failure.
+            </div>
+
+            <div class="error-details">
+                &gt; ERROR_TYPE: SERVER_FAILURE
+                <br>
+                &gt; STATUS_CODE: 500_|_502_|_503_|_504
+                <br>
+                &gt; RESPONSE_TIME: TIMEOUT
+                <br>
+                &gt; INCIDENT_TIME: <span id="timestamp"></span>
+            </div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="suggestions">
+            <h3>&gt; TROUBLESHOOTING_PROTOCOL:</h3>
+            <ul>
+                <li>Wait a few moments and try again</li>
+                <li>Clear your browser cache and cookies</li>
+                <li>Check our status page for ongoing incidents</li>
+                <li>If the problem persists, contact support</li>
+                <li>Try accessing from a different network</li>
+            </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div>
+            <button class="retry-button" onclick="window.location.reload()">
+                [RETRY_CONNECTION]
+            </button>
+            <button class="home-button" onclick="window.location.href='/'">
+                [RETURN_HOME]
+            </button>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>SERVER: OFFLINE</span>
+            </div>
+            <span>|</span>
+            <div class="status-item">
+                <span>ERROR_CODE: 50x</span>
+            </div>
+            <span>|</span>
+            <div class="status-item">
+                <span>AUTO_RETRY: DISABLED</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('timestamp').textContent = new Date().toISOString();
+
+        // Auto-retry after 30 seconds (optional)
+        // setTimeout(() => {
+        //     window.location.reload();
+        // }, 30000);
+    </script>
+</body>
+</html>

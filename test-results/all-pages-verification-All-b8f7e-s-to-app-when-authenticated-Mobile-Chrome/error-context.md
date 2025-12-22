@@ -1,0 +1,73 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - img "Anonymous Logo"
+        - generic [ref=e10]:
+          - heading "[ANONYMOUS_SECURE_LINE]" [level=1] [ref=e11]
+          - paragraph [ref=e12]: "> ENCRYPTED_CHANNEL_ACTIVE"
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]: root@secure-line:~$
+          - generic [ref=e16]: "ext: 760-870"
+        - generic [ref=e17]:
+          - generic [ref=e18]: "> STATUS"
+          - generic [ref=e19]: Idle
+        - generic [ref=e22]: Connected
+  - main [ref=e23]:
+    - generic [ref=e26]:
+      - heading "> SECURITY_KEYPAD" [level=2] [ref=e28]
+      - generic [ref=e29]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: "> INPUT:"
+          - textbox "_ _ _ - _ _ _" [ref=e33]
+        - generic [ref=e34]:
+          - button "1" [ref=e35] [cursor=pointer]:
+            - generic [ref=e36]: "1"
+          - button "2 ABC" [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]: "2"
+            - generic [ref=e39]: ABC
+          - button "3 DEF" [ref=e40] [cursor=pointer]:
+            - generic [ref=e41]: "3"
+            - generic [ref=e42]: DEF
+          - button "4 GHI" [ref=e43] [cursor=pointer]:
+            - generic [ref=e44]: "4"
+            - generic [ref=e45]: GHI
+          - button "5 JKL" [ref=e46] [cursor=pointer]:
+            - generic [ref=e47]: "5"
+            - generic [ref=e48]: JKL
+          - button "6 MNO" [ref=e49] [cursor=pointer]:
+            - generic [ref=e50]: "6"
+            - generic [ref=e51]: MNO
+          - button "7 PQRS" [ref=e52] [cursor=pointer]:
+            - generic [ref=e53]: "7"
+            - generic [ref=e54]: PQRS
+          - button "8 TUV" [ref=e55] [cursor=pointer]:
+            - generic [ref=e56]: "8"
+            - generic [ref=e57]: TUV
+          - button "9 WXYZ" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]: "9"
+            - generic [ref=e60]: WXYZ
+          - button "*" [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]: "*"
+          - button "0 +" [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: "0"
+            - generic [ref=e65]: +
+          - button "#" [ref=e66] [cursor=pointer]:
+            - generic [ref=e67]: "#"
+        - generic [ref=e68]:
+          - button "[INITIATE]" [disabled] [ref=e69]:
+            - generic [ref=e71]: "[INITIATE]"
+          - button "[TERMINATE]" [disabled] [ref=e72]:
+            - generic [ref=e74]: "[TERMINATE]"
+    - group [ref=e76]:
+      - generic "> CALL_HISTORY (0)" [ref=e77] [cursor=pointer]
+  - contentinfo [ref=e78]:
+    - generic [ref=e80]:
+      - generic [ref=e81]: "> ANONYMOUS_SECURE_LINE_v5.0 | ENCRYPTED_PROTOCOL_ACTIVE"
+      - generic [ref=e82]: "SID: 4wNiNggR | STATE: IDLE"
+```
