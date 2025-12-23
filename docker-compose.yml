@@ -1,0 +1,268 @@
+# ==============================================================================
+# DOCKER COMPOSE - PRODUCTION CONFIGURATION
+# ==============================================================================
+#
+# This configuration spins up:
+# 1. Calling App (client + server in single container)
+# 2. Redis (for horizontal scaling and session management)
+#
+# Usage:
+#   docker-compose up -d          # Start in background
+#   docker-compose logs -f        # View logs
+#   docker-compose down           # Stop all services
+#   docker-compose ps             # Check status
+#
+# ==============================================================================
+
+version: '3.8'
+
+services:
+  # ============================================================================
+  # REDIS - In-Memory Data Store
+  # ============================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: calling-app-redis
+    restart: unless-stopped
+    
+    # Port mapping (only exposed to app, not to host for security)
+    # Remove 'ports' section to keep Redis internal-only
+    ports:
+      - "6379:6379"
+    
+    # Persistent volume for data
+    volumes:
+      - redis-data:/data
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Security: Run as non-root
+    user: redis
+    
+    # Redis configuration
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+    
+    networks:
+      - calling-app-network
+
+  # ============================================================================
+  # CALLING APP - Main Application
+  # ============================================================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    container_name: calling-app
+    restart: unless-stopped
+    
+    # Port mapping
+    ports:
+      - "3000:3000"
+    
+    # Environment variables
+    # IMPORTANT: Create .env file in project root or use env_file
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      
+      # Redis Configuration
+      - USE_REDIS=true
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      
+      # Security (MUST be set via .env file)
+      # - JWT_SECRET=${JWT_SECRET}
+      # - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+      
+      # Optional: Set via .env
+      # - SENTRY_DSN=${SENTRY_DSN}
+      # - ENABLE_GUEST_ACCESS=false
+      # - USE_HTTPS=true
+    
+    # Load environment from file (recommended for secrets)
+    env_file:
+      - ./app/server/.env
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+      
+      # Restart policy
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    
+    # Depends on Redis
+    depends_on:
+      redis:
+        condition: service_healthy
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Volumes (optional - for SSL certificates)
+    volumes:
+      - ./app/server/cert:/app/cert:ro
+    
+    networks:
+      - calling-app-network
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# ==============================================================================
+# NETWORKS
+# ==============================================================================
+networks:
+  calling-app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# ==============================================================================
+# VOLUMES
+# ==============================================================================
+volumes:
+  redis-data:
+    driver: local
+
+# ==============================================================================
+# USAGE EXAMPLES
+# ==============================================================================
+#
+# Development:
+#   docker-compose up
+#
+# Production (detached):
+#   docker-compose up -d
+#
+# View logs:
+#   docker-compose logs -f app
+#   docker-compose logs -f redis
+#
+# Restart service:
+#   docker-compose restart app
+#
+# Stop all:
+#   docker-compose down
+#
+# Stop and remove volumes:
+#   docker-compose down -v
+#
+# Rebuild after code changes:
+#   docker-compose up --build
+#
+# Scale app (horizontal scaling with Redis):
+#   docker-compose up -d --scale app=3
+#
+# ==============================================================================
+# PRODUCTION CHECKLIST
+# ==============================================================================
+#
+# Before deploying:
+#
+# 1. ✅ Create server/.env with production values
+#    - JWT_SECRET (strong 32+ char secret)
+#    - ALLOWED_ORIGINS (your domain, no localhost)
+#    - SENTRY_DSN (for error tracking)
+#    - USE_HTTPS=true
+#    - ENABLE_GUEST_ACCESS=false
+#
+# 2. ✅ SSL Certificates
+#    - Place in server/cert/
+#    - cert.pem (certificate)
+#    - key.pem (private key)
+#
+# 3. ✅ Redis Security (if exposing port)
+#    - Set REDIS_PASSWORD in .env
+#    - Update redis command with --requirepass
+#    - Remove ports section if Redis is internal-only
+#
+# 4. ✅ Resource Limits
+#    - Adjust CPU/memory based on server capacity
+#    - Monitor with: docker stats
+#
+# 5. ✅ Networking
+#    - Use reverse proxy (nginx) if needed
+#    - Configure firewall rules
+#    - Set up load balancer for scaling
+#
+# 6. ✅ Monitoring
+#    - Set up logging aggregation
+#    - Configure Sentry
+#    - Set up health check monitoring
+#
+# 7. ✅ Backup
+#    - Backup Redis data volume regularly
+#    - Use: docker run --rm -v redis-data:/data -v $(pwd):/backup alpine tar czf /backup/redis-backup.tar.gz -C /data .
+#
+# ==============================================================================
+# REDIS CONFIGURATION NOTES
+# ==============================================================================
+#
+# The Redis instance is configured with:
+# - Persistence: appendonly (AOF) for durability
+# - Max memory: 256MB with LRU eviction
+# - Sync: everysec (balance between performance and safety)
+#
+# For production with high traffic:
+# - Increase maxmemory to 1GB+
+# - Consider Redis Cluster for high availability
+# - Use Redis Sentinel for automatic failover
+#
+# ==============================================================================
+# SCALING NOTES
+# ==============================================================================
+#
+# With Redis, you can horizontally scale the app:
+#
+#   docker-compose up -d --scale app=5
+#
+# This will create 5 app instances sharing the same Redis.
+# Requires:
+# - USE_REDIS=true in environment
+# - Load balancer (nginx, HAProxy, or cloud LB)
+# - Redis for shared session/connection state
+#
+# ==============================================================================

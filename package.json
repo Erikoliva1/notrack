@@ -1,0 +1,16 @@
+{
+  "name": "calling-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "cd app/server && npm ci",
+    "build": "cd app/server && npm run build",
+    "start": "cd app/server && node dist/index.js"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  }
+}
