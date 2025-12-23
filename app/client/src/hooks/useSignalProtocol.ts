@@ -37,6 +37,8 @@ export function useSignalProtocol(
     // Extension Assignment
     const handleExtensionAssigned = (data: { extensionNumber: string }) => {
       console.log('[SignalProtocol] Extension assigned:', data.extensionNumber);
+      // Save the extension to localStorage for persistence
+      localStorage.setItem('notrack_extension', data.extensionNumber);
       callbacksRef.current.onExtensionAssigned(data.extensionNumber);
     };
 

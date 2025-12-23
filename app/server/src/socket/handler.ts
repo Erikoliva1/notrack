@@ -57,14 +57,37 @@ export function setupSocketHandlers(io: Server): void {
     console.log(`   Username: ${socket.data.username || 'N/A'}`);
 
     // Generate and assign unique extension number
+    // Check if client requested a specific extension (persistent ID)
     try {
-      const extensionNumber = await generateExtensionNumber();
+      const requestedExtension = socket.handshake.auth?.extension;
+      
+      let extensionNumber: string;
+      
+      // Validate format if extension was requested
+      const isValidFormat = (ext: string) => /^\d{3}-\d{3}$/.test(ext);
+      
+      if (requestedExtension && isValidFormat(requestedExtension)) {
+        // Check if the requested extension is available
+        const isAvailable = !(await Redis.isExtensionInUse(requestedExtension));
+        
+        if (isAvailable) {
+          extensionNumber = requestedExtension;
+          console.log(`   ✅ Persistent ID requested and assigned: ${extensionNumber}`);
+        } else {
+          // Extension is taken, generate a new one
+          extensionNumber = await generateExtensionNumber();
+          console.log(`   ⚠️  Requested extension ${requestedExtension} is taken, assigned: ${extensionNumber}`);
+        }
+      } else {
+        // No valid extension requested, generate a new one
+        extensionNumber = await generateExtensionNumber();
+        console.log(`   Extension: ${extensionNumber}`);
+      }
       
       // Store mappings in Redis
       await Redis.setExtensionMapping(extensionNumber, socket.id);
 
       const activeUsers = await Redis.getActiveUsersCount();
-      console.log(`   Extension: ${extensionNumber}`);
       console.log(`   Total Users: ${activeUsers}`);
       console.log('════════════════════════════════════════════════');
 

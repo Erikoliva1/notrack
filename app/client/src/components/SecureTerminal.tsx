@@ -82,6 +82,10 @@ export default function SecureTerminal() {
     cleanup: cleanupWebRTC,
   } = useWebRTC(socket, remoteExtension);
 
+  // Microphone permission state
+  const [permissionGranted, setPermissionGranted] = useState(false);
+  const ringtoneRef = useRef<HTMLAudioElement | null>(null);
+
   // WebRTC stats monitoring
   const stats = useWebRTCStats(peerConnection, callState === 'CONNECTED');
 
@@ -289,25 +293,84 @@ export default function SecureTerminal() {
     },
   });
 
+  // 1. FORCE MICROPHONE PERMISSION ON LOAD (One-time only)
+  useEffect(() => {
+    const askForPermission = async () => {
+      try {
+        // Check if permission was already granted
+        const permissionStatus = await navigator.permissions.query({ name: 'microphone' as any });
+        
+        if (permissionStatus.state === 'granted') {
+          console.log('✅ Microphone permission already granted');
+          setPermissionGranted(true);
+          return;
+        }
+        
+        // Request permission
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // We got it! Now stop the stream (we just wanted the permission)
+        stream.getTracks().forEach(track => track.stop());
+        setPermissionGranted(true);
+        console.log('✅ Microphone permission secured');
+      } catch (err: any) {
+        console.error('❌ Permission denied:', err);
+        // Don't show alert - let user try to make a call and handle error there
+      }
+    };
+    
+    // Only ask for permission if not already granted
+    if (!permissionGranted) {
+      askForPermission();
+    }
+  }, [permissionGranted]);
+
+  // 2. THE "KILL SWITCH" FOR AUDIO (Fixes the Stuck Beep)
+  const stopAllAudio = useCallback(() => {
+    // Stop ringtone
+    if (ringtoneRef.current) {
+      ringtoneRef.current.pause();
+      ringtoneRef.current.currentTime = 0; // Rewind to start
+    }
+    
+    // Stop remote audio
+    if (remoteAudioRef.current) {
+      remoteAudioRef.current.pause();
+      remoteAudioRef.current.srcObject = null;
+      remoteAudioRef.current.src = '';
+    }
+    
+    // Stop Web Audio API ringtone
+    stopRingtone();
+  }, [stopRingtone]);
+
   // Initialize socket connection
   useEffect(() => {
     console.log('Initializing socket connection to', SERVER_URL);
+    
+    // Retrieve saved extension from localStorage
+    const savedExtension = localStorage.getItem('notrack_extension');
+    
     const newSocket = io(SERVER_URL, {
       transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
+      auth: {
+        // Send saved extension to server for persistence
+        extension: savedExtension
+      }
     });
 
     setSocket(newSocket);
 
     return () => {
       console.log('Cleaning up socket connection');
+      stopAllAudio(); // Ensure all audio is stopped
       stopRingtone();
       stopCallDurationTimer();
       newSocket.close();
     };
-  }, [stopRingtone, stopCallDurationTimer]);
+  }, [stopRingtone, stopCallDurationTimer, stopAllAudio]);
 
   // Format extension number as XXX-XXX
   const formatExtension = (value: string) => {
@@ -360,7 +423,7 @@ export default function SecureTerminal() {
 
   const handleAcceptCall = async () => {
     if (incomingCall && socket) {
-      stopRingtone();
+      stopAllAudio(); // STOP ALL AUDIO BEFORE CONNECTING
       
       // CRITICAL FIX: Resume AudioContext (browser policy compliance)
       // Browser requires user gesture to play audio
@@ -429,6 +492,7 @@ export default function SecureTerminal() {
       addCallToLog(remoteExtension, 'Completed', duration);
     }
     
+    stopAllAudio(); // KILL ALL AUDIO IMMEDIATELY
     stopCallDurationTimer();
     cleanupWebRTC();
     setCallState('IDLE');
