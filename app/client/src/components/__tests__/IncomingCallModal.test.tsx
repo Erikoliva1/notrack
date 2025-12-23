@@ -30,7 +30,7 @@ describe('IncomingCallModal Component', () => {
       />
     );
 
-    expect(screen.getByText(/incoming call/i)).toBeInTheDocument();
+    expect(screen.getByText(/\[CALL_DETECTED\]/i)).toBeInTheDocument();
   });
 
   it('calls onAccept when accept button is clicked', () => {
@@ -45,7 +45,7 @@ describe('IncomingCallModal Component', () => {
       />
     );
 
-    const acceptButton = screen.getByText('Accept');
+    const acceptButton = screen.getByText('[ACCEPT]');
     fireEvent.click(acceptButton);
 
     expect(mockOnAccept).toHaveBeenCalled();
@@ -63,7 +63,7 @@ describe('IncomingCallModal Component', () => {
       />
     );
 
-    const rejectButton = screen.getByText('Reject');
+    const rejectButton = screen.getByText('[REJECT]');
     fireEvent.click(rejectButton);
 
     expect(mockOnReject).toHaveBeenCalled();
@@ -81,8 +81,8 @@ describe('IncomingCallModal Component', () => {
       />
     );
 
-    expect(screen.getByText('Accept')).toBeInTheDocument();
-    expect(screen.getByText('Reject')).toBeInTheDocument();
+    expect(screen.getByText('[ACCEPT]')).toBeInTheDocument();
+    expect(screen.getByText('[REJECT]')).toBeInTheDocument();
   });
 
   it('renders with modal overlay', () => {
