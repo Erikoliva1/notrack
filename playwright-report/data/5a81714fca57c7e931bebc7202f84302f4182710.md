@@ -1,0 +1,92 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - img "Anonymous Logo" [ref=e9]
+        - generic [ref=e10]:
+          - heading "[ANONYMOUS_LINE]" [level=1] [ref=e11]
+          - paragraph [ref=e12]: "> ENCRYPTED_CHANNEL_ACTIVE"
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]: ext
+          - generic [ref=e16]: 405-449
+        - generic [ref=e17]:
+          - generic [ref=e18]: status
+          - generic [ref=e19]: Idle
+        - generic [ref=e22]: Connected
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e27]:
+        - heading "Call Log" [level=2] [ref=e29]
+        - table [ref=e31]:
+          - rowgroup [ref=e32]:
+            - row "Time Extension Status Duration" [ref=e33]:
+              - columnheader "Time" [ref=e34]
+              - columnheader "Extension" [ref=e35]
+              - columnheader "Status" [ref=e36]
+              - columnheader "Duration" [ref=e37]
+          - rowgroup [ref=e38]:
+            - row "No call history Your call log will appear here" [ref=e39]:
+              - cell "No call history Your call log will appear here" [ref=e40]:
+                - generic [ref=e41]:
+                  - img [ref=e42]
+                  - paragraph [ref=e44]: No call history
+                  - paragraph [ref=e45]: Your call log will appear here
+      - generic [ref=e47]:
+        - heading "> SECURITY_KEYPAD" [level=2] [ref=e49]
+        - generic [ref=e50]:
+          - generic [ref=e52]:
+            - generic [ref=e53]: "> INPUT:"
+            - textbox "_ _ _ - _ _ _" [ref=e54]
+          - generic [ref=e55]:
+            - button "1" [ref=e56] [cursor=pointer]:
+              - generic [ref=e57]: "1"
+            - button "2 ABC" [ref=e58] [cursor=pointer]:
+              - generic [ref=e59]: "2"
+              - generic [ref=e60]: ABC
+            - button "3 DEF" [ref=e61] [cursor=pointer]:
+              - generic [ref=e62]: "3"
+              - generic [ref=e63]: DEF
+            - button "4 GHI" [ref=e64] [cursor=pointer]:
+              - generic [ref=e65]: "4"
+              - generic [ref=e66]: GHI
+            - button "5 JKL" [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: "5"
+              - generic [ref=e69]: JKL
+            - button "6 MNO" [ref=e70] [cursor=pointer]:
+              - generic [ref=e71]: "6"
+              - generic [ref=e72]: MNO
+            - button "7 PQRS" [ref=e73] [cursor=pointer]:
+              - generic [ref=e74]: "7"
+              - generic [ref=e75]: PQRS
+            - button "8 TUV" [ref=e76] [cursor=pointer]:
+              - generic [ref=e77]: "8"
+              - generic [ref=e78]: TUV
+            - button "9 WXYZ" [ref=e79] [cursor=pointer]:
+              - generic [ref=e80]: "9"
+              - generic [ref=e81]: WXYZ
+            - button "*" [ref=e82] [cursor=pointer]:
+              - generic [ref=e83]: "*"
+            - button "0 +" [ref=e84] [cursor=pointer]:
+              - generic [ref=e85]: "0"
+              - generic [ref=e86]: +
+            - button "#" [ref=e87] [cursor=pointer]:
+              - generic [ref=e88]: "#"
+          - generic [ref=e89]:
+            - button "[INITIATE]" [disabled] [ref=e90]:
+              - generic [ref=e92]: "[INITIATE]"
+            - button "[TERMINATE]" [disabled] [ref=e93]:
+              - generic [ref=e95]: "[TERMINATE]"
+  - contentinfo [ref=e96]:
+    - generic [ref=e98]:
+      - generic [ref=e99]: "> ANONYMOUS_SECURE_LINE_v5.0 | ENCRYPTED_PROTOCOL_ACTIVE"
+      - generic [ref=e100]:
+        - link "[PRIVACY_POLICY]" [ref=e101] [cursor=pointer]:
+          - /url: /privacy
+        - link "[CONTACT]" [ref=e102] [cursor=pointer]:
+          - /url: mailto:admin@notrack.co.uk
+      - generic [ref=e103]: "SID: iZk7qeCg | STATE: IDLE"
+```

@@ -5,6 +5,7 @@
   "scripts": {
     "install": "cd app/server && npm ci",
     "build": "cd app/server && npm run build",
+    "dev": "cd app/server && npm run dev",
     "start": "cd app/server && node dist/index.js"
   },
   "dependencies": {

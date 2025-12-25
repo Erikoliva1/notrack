@@ -1,0 +1,70 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - img "Anonymous Logo" [ref=e9]
+        - heading "[ANONYMOUS_LINE]" [level=1] [ref=e11]
+      - generic [ref=e12]:
+        - generic [ref=e14]: 001-723
+        - generic [ref=e16]: Idle
+  - main [ref=e19]:
+    - generic [ref=e22]:
+      - heading "> SECURITY_KEYPAD" [level=2] [ref=e24]
+      - generic [ref=e25]:
+        - generic [ref=e27]:
+          - generic [ref=e28]: "> INPUT:"
+          - textbox "_ _ _ - _ _ _" [ref=e29]
+        - generic [ref=e30]:
+          - button "1" [ref=e31] [cursor=pointer]:
+            - generic [ref=e32]: "1"
+          - button "2 ABC" [ref=e33] [cursor=pointer]:
+            - generic [ref=e34]: "2"
+            - generic [ref=e35]: ABC
+          - button "3 DEF" [ref=e36] [cursor=pointer]:
+            - generic [ref=e37]: "3"
+            - generic [ref=e38]: DEF
+          - button "4 GHI" [ref=e39] [cursor=pointer]:
+            - generic [ref=e40]: "4"
+            - generic [ref=e41]: GHI
+          - button "5 JKL" [ref=e42] [cursor=pointer]:
+            - generic [ref=e43]: "5"
+            - generic [ref=e44]: JKL
+          - button "6 MNO" [ref=e45] [cursor=pointer]:
+            - generic [ref=e46]: "6"
+            - generic [ref=e47]: MNO
+          - button "7 PQRS" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]: "7"
+            - generic [ref=e50]: PQRS
+          - button "8 TUV" [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]: "8"
+            - generic [ref=e53]: TUV
+          - button "9 WXYZ" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]: "9"
+            - generic [ref=e56]: WXYZ
+          - button "*" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: "*"
+          - button "0 +" [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]: "0"
+            - generic [ref=e61]: +
+          - button "#" [ref=e62] [cursor=pointer]:
+            - generic [ref=e63]: "#"
+        - generic [ref=e64]:
+          - button "[INITIATE]" [disabled] [ref=e65]:
+            - generic [ref=e67]: "[INITIATE]"
+          - button "[TERMINATE]" [disabled] [ref=e68]:
+            - generic [ref=e70]: "[TERMINATE]"
+    - group [ref=e72]:
+      - generic "> CALL_HISTORY (0)" [ref=e73] [cursor=pointer]
+  - contentinfo [ref=e74]:
+    - generic [ref=e76]:
+      - generic [ref=e77]: "> ANONYMOUS_SECURE_LINE_v5.0 | ENCRYPTED_PROTOCOL_ACTIVE"
+      - generic [ref=e78]:
+        - link "[PRIVACY_POLICY]" [ref=e79] [cursor=pointer]:
+          - /url: /privacy
+        - link "[CONTACT]" [ref=e80] [cursor=pointer]:
+          - /url: mailto:admin@notrack.co.uk
+      - generic [ref=e81]: "SID: T7zYqr_h | STATE: IDLE"
+```

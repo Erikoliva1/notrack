@@ -1,2 +1,3070 @@
-<testsuites id="" name="" tests="0" failures="0" skipped="0" errors="0" time="60.961332999999996">
+<testsuites id="" name="" tests="240" failures="181" skipped="0" errors="0" time="646.5514319999999">
+<testsuite name="all-pages-verification.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="chromium" tests="40" failures="11" skipped="0" time="53.942" errors="0">
+<testcase name="All Pages Verification Suite › Home Page (/) › should load home page successfully" classname="all-pages-verification.spec.ts" time="3.136">
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags" classname="all-pages-verification.spec.ts" time="2.416">
+<failure message="all-pages-verification.spec.ts:26:9 should have correct SEO meta tags" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:26:9 › All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags 
+
+    Error: locator.getAttribute: Error: strict mode violation: locator('meta[name="description"]') resolved to 2 elements:
+        1) <meta name="description" content="Secure and Anonymous Audio Calling System"/> aka locator('meta[name="description"]').first()
+        2) <meta data-rh="true" name="description" content="Encrypted peer-to-peer voice calls with zero logs. No registration, no tracking, complete anonymity. WebRTC-powered secure communication platform."/> aka locator('meta[name="description"]').nth(1)
+
+    Call log:
+      - waiting for locator('meta[name="description"]')
+
+
+      32 |       
+      33 |       // Check meta description
+    > 34 |       const description = await page.locator('meta[name="description"]').getAttribute('content');
+         |                                                                          ^
+      35 |       expect(description).toContain('Encrypted peer-to-peer');
+      36 |       
+      37 |       // Check Open Graph tags
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:34:74
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-286f0--have-correct-SEO-meta-tags-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-286f0--have-correct-SEO-meta-tags-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-286f0--have-correct-SEO-meta-tags-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-286f0--have-correct-SEO-meta-tags-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-286f0--have-correct-SEO-meta-tags-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-286f0--have-correct-SEO-meta-tags-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows" classname="all-pages-verification.spec.ts" time="1.281">
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling" classname="all-pages-verification.spec.ts" time="0.63">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page" classname="all-pages-verification.spec.ts" time="0.827">
+<failure message="all-pages-verification.spec.ts:82:9 should load privacy policy page" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:82:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      84 |       
+      85 |       // Verify page loaded
+    > 86 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+         |                                                        ^
+      87 |       await expect(page.locator('text=CORE_PRINCIPLES')).toBeVisible();
+      88 |     });
+      89 |
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:86:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-6687d-ld-load-privacy-policy-page-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-6687d-ld-load-privacy-policy-page-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-6687d-ld-load-privacy-policy-page-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-6687d-ld-load-privacy-policy-page-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-6687d-ld-load-privacy-policy-page-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-6687d-ld-load-privacy-policy-page-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling" classname="all-pages-verification.spec.ts" time="1.362">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top" classname="all-pages-verification.spec.ts" time="1.818">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling" classname="all-pages-verification.spec.ts" time="1.044">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button" classname="all-pages-verification.spec.ts" time="0.748">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button" classname="all-pages-verification.spec.ts" time="0.898">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex" classname="all-pages-verification.spec.ts" time="0.787">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling" classname="all-pages-verification.spec.ts" time="0.748">
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should load unauthorized component" classname="all-pages-verification.spec.ts" time="1.315">
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button" classname="all-pages-verification.spec.ts" time="5.992">
+<failure message="all-pages-verification.spec.ts:206:9 should have AUTHENTICATE button" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:206:9 › All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('button:has-text("AUTHENTICATE")')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('button:has-text("AUTHENTICATE")')
+
+
+      207 |       await page.goto('/login');
+      208 |       
+    > 209 |       await expect(page.locator('button:has-text("AUTHENTICATE")')).toBeVisible();
+          |                                                                     ^
+      210 |     });
+      211 |
+      212 |     test('should have blurred background effect', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:209:69
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have blurred background effect" classname="all-pages-verification.spec.ts" time="1.315">
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have noindex meta tag" classname="all-pages-verification.spec.ts" time="0.985">
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes" classname="all-pages-verification.spec.ts" time="1.197">
+<failure message="all-pages-verification.spec.ts:233:9 should show 404 for invalid routes" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:233:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=404')
+    Expected: visible
+    Error: strict mode violation: locator('text=404') resolved to 2 elements:
+        1) <h1 class="text-8xl font-bold text-[#00ff41] text-glow font-mono tracking-[0.3em]">404</h1> aka getByRole('heading', { name: '404' })
+        2) <span>ERROR_CODE: 404</span> aka getByText('ERROR_CODE:')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=404')
+
+
+      234 |       await page.goto('/invalid-route-that-does-not-exist');
+      235 |       
+    > 236 |       await expect(page.locator('text=404')).toBeVisible();
+          |                                              ^
+      237 |       await expect(page.locator('text=SIGNAL_LOST')).toBeVisible();
+      238 |     });
+      239 |
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:236:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-34dec-show-404-for-invalid-routes-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-34dec-show-404-for-invalid-routes-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-34dec-show-404-for-invalid-routes-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-34dec-show-404-for-invalid-routes-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-34dec-show-404-for-invalid-routes-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-34dec-show-404-for-invalid-routes-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap)" classname="all-pages-verification.spec.ts" time="1.73">
+<failure message="all-pages-verification.spec.ts:240:9 should show 404 for /500 route (404 trap)" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:240:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap) 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=404')
+    Expected: visible
+    Error: strict mode violation: locator('text=404') resolved to 2 elements:
+        1) <h1 class="text-8xl font-bold text-[#00ff41] text-glow font-mono tracking-[0.3em]">404</h1> aka getByRole('heading', { name: '404' })
+        2) <span>ERROR_CODE: 404</span> aka getByText('ERROR_CODE:')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=404')
+
+
+      242 |       
+      243 |       // Should show NotFound, not a 500 error page
+    > 244 |       await expect(page.locator('text=404')).toBeVisible();
+          |                                              ^
+      245 |       await expect(page.locator('text=SIGNAL_LOST')).toBeVisible();
+      246 |     });
+      247 |
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:244:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-cbca0-404-for-500-route-404-trap--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-cbca0-404-for-500-route-404-trap--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-cbca0-404-for-500-route-404-trap--chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-cbca0-404-for-500-route-404-trap--chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-cbca0-404-for-500-route-404-trap--chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-cbca0-404-for-500-route-404-trap--chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap)" classname="all-pages-verification.spec.ts" time="1.259">
+<failure message="all-pages-verification.spec.ts:248:9 should show 404 for /403 route (404 trap)" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:248:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap) 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=404')
+    Expected: visible
+    Error: strict mode violation: locator('text=404') resolved to 2 elements:
+        1) <h1 class="text-8xl font-bold text-[#00ff41] text-glow font-mono tracking-[0.3em]">404</h1> aka getByRole('heading', { name: '404' })
+        2) <span>ERROR_CODE: 404</span> aka getByText('ERROR_CODE:')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=404')
+
+
+      249 |       await page.goto('/403');
+      250 |       
+    > 251 |       await expect(page.locator('text=404')).toBeVisible();
+          |                                              ^
+      252 |     });
+      253 |
+      254 |     test('should have glitching text effect', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:251:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7c541-404-for-403-route-404-trap--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7c541-404-for-403-route-404-trap--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-7c541-404-for-403-route-404-trap--chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-7c541-404-for-403-route-404-trap--chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-7c541-404-for-403-route-404-trap--chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-7c541-404-for-403-route-404-trap--chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have glitching text effect" classname="all-pages-verification.spec.ts" time="2.125">
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button" classname="all-pages-verification.spec.ts" time="1.218">
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators" classname="all-pages-verification.spec.ts" time="1.032">
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated" classname="all-pages-verification.spec.ts" time="1.636">
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated" classname="all-pages-verification.spec.ts" time="1.415">
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated" classname="all-pages-verification.spec.ts" time="1.114">
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy" classname="all-pages-verification.spec.ts" time="0.666">
+<failure message="all-pages-verification.spec.ts:334:9 should navigate from home to privacy" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:334:9 › All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      339 |       
+      340 |       await expect(page).toHaveURL('/privacy');
+    > 341 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+          |                                                        ^
+      342 |     });
+      343 |
+      344 |     test('should navigate back using browser back button', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:341:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-44591-vigate-from-home-to-privacy-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-44591-vigate-from-home-to-privacy-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-44591-vigate-from-home-to-privacy-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-44591-vigate-from-home-to-privacy-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-44591-vigate-from-home-to-privacy-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-44591-vigate-from-home-to-privacy-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button" classname="all-pages-verification.spec.ts" time="1.1">
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button" classname="all-pages-verification.spec.ts" time="1.137">
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on mobile viewport" classname="all-pages-verification.spec.ts" time="1.041">
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on tablet viewport" classname="all-pages-verification.spec.ts" time="1.1">
+<failure message="all-pages-verification.spec.ts:385:9 should work on tablet viewport" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:385:9 › All Pages Verification Suite › Responsive Design › should work on tablet viewport 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      387 |       await page.goto('/privacy');
+      388 |       
+    > 389 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+          |                                                        ^
+      390 |     });
+      391 |
+      392 |     test('should work on desktop viewport', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:389:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on desktop viewport" classname="all-pages-verification.spec.ts" time="1.105">
+<failure message="all-pages-verification.spec.ts:392:9 should work on desktop viewport" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:392:9 › All Pages Verification Suite › Responsive Design › should work on desktop viewport 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      394 |       await page.goto('/privacy');
+      395 |       
+    > 396 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+          |                                                        ^
+      397 |     });
+      398 |   });
+      399 |
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:396:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page" classname="all-pages-verification.spec.ts" time="1.127">
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have keyboard navigation support" classname="all-pages-verification.spec.ts" time="0.907">
+<failure message="all-pages-verification.spec.ts:412:9 should have keyboard navigation support" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:412:9 › All Pages Verification Suite › Accessibility › should have keyboard navigation support 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "BUTTON"
+    Received: "BODY"
+
+      418 |       // Should be able to activate with Enter
+      419 |       const focused = await page.evaluate(() => document.activeElement?.tagName);
+    > 420 |       expect(focused).toBe('BUTTON');
+          |                       ^
+      421 |     });
+      422 |
+      423 |     test('should have sufficient color contrast', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:420:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-51ca4-keyboard-navigation-support-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-51ca4-keyboard-navigation-support-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-51ca4-keyboard-navigation-support-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-51ca4-keyboard-navigation-support-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-51ca4-keyboard-navigation-support-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-51ca4-keyboard-navigation-support-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have sufficient color contrast" classname="all-pages-verification.spec.ts" time="1.266">
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should load home page in reasonable time" classname="all-pages-verification.spec.ts" time="0.766">
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should have smooth scrolling on privacy page" classname="all-pages-verification.spec.ts" time="1.33">
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages" classname="all-pages-verification.spec.ts" time="1.752">
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme" classname="all-pages-verification.spec.ts" time="0.955">
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should handle network errors gracefully" classname="all-pages-verification.spec.ts" time="0.453">
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should recover from navigation errors" classname="all-pages-verification.spec.ts" time="1.209">
+<failure message="all-pages-verification.spec.ts:514:9 should recover from navigation errors" type="FAILURE">
+<![CDATA[  [chromium] › all-pages-verification.spec.ts:514:9 › All Pages Verification Suite › Error Handling › should recover from navigation errors 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=404')
+    Expected: visible
+    Error: strict mode violation: locator('text=404') resolved to 2 elements:
+        1) <h1 class="text-8xl font-bold text-[#00ff41] text-glow font-mono tracking-[0.3em]">404</h1> aka getByRole('heading', { name: '404' })
+        2) <span>ERROR_CODE: 404</span> aka getByText('ERROR_CODE:')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=404')
+
+
+      517 |       
+      518 |       // Should show 404
+    > 519 |       await expect(page.locator('text=404')).toBeVisible();
+          |                                              ^
+      520 |       
+      521 |       // Navigate back to valid route
+      522 |       await page.goto('/');
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:519:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-738d3-over-from-navigation-errors-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-738d3-over-from-navigation-errors-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-738d3-over-from-navigation-errors-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-738d3-over-from-navigation-errors-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-738d3-over-from-navigation-errors-chromium\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-738d3-over-from-navigation-errors-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="call-flow.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="chromium" tests="8" failures="8" skipped="0" time="70.361" errors="0">
+<testcase name="Complete Call Flow › User receives extension on connection" classname="call-flow.spec.ts" time="5.76">
+<failure message="call-flow.spec.ts:27:7 User receives extension on connection" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:27:7 › Complete Call Flow › User receives extension on connection ─
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:28:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-chromium\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Two users can establish a call" classname="call-flow.spec.ts" time="5.699">
+<failure message="call-flow.spec.ts:38:7 Two users can establish a call" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:38:7 › Complete Call Flow › Two users can establish a call ────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:47:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-chromium\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-chromium\test-failed-2.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › User can reject incoming call" classname="call-flow.spec.ts" time="5.646">
+<failure message="call-flow.spec.ts:96:7 User can reject incoming call" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:96:7 › Complete Call Flow › User can reject incoming call ─────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:103:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-User-can-reject-incoming-call-chromium\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-User-can-reject-incoming-call-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Flow-User-can-reject-incoming-call-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Flow-User-can-reject-incoming-call-chromium\test-failed-2.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-User-can-reject-incoming-call-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-User-can-reject-incoming-call-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Handles microphone permission denial gracefully" classname="call-flow.spec.ts" time="30.267">
+<failure message="call-flow.spec.ts:129:7 Handles microphone permission denial gracefully" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:129:7 › Complete Call Flow › Handles microphone permission denial gracefully 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="user-extension"]') to be visible
+
+
+      134 |     
+      135 |     // Wait for connection
+    > 136 |     await page.waitForSelector('[data-testid="user-extension"]');
+          |                ^
+      137 |     
+      138 |     const extension = await page.locator('[data-testid="user-extension"]').textContent();
+      139 |     
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:136:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-chromium\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Call log displays correctly" classname="call-flow.spec.ts" time="5.654">
+<failure message="call-flow.spec.ts:149:7 Call log displays correctly" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:149:7 › Complete Call Flow › Call log displays correctly ──────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:150:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Call-log-displays-correctly-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Call-log-displays-correctly-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Flow-Call-log-displays-correctly-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Call-log-displays-correctly-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Call-log-displays-correctly-chromium\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Call-log-displays-correctly-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Connection status updates correctly" classname="call-flow.spec.ts" time="5.704">
+<failure message="call-flow.spec.ts:167:7 Connection status updates correctly" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:167:7 › Complete Call Flow › Connection status updates correctly ──
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('[data-testid="connection-status"]')
+    Expected: "Connected"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" with timeout 5000ms
+      - waiting for locator('[data-testid="connection-status"]')
+
+
+      170 |     // Initial connection
+      171 |     const connectionStatus = page.locator('[data-testid="connection-status"]');
+    > 172 |     await expect(connectionStatus).toHaveText('Connected', { timeout: 5000 });
+          |                                    ^
+      173 |
+      174 |     // Simulate disconnect (close page and reconnect)
+      175 |     await page.evaluate(() => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:172:36
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-chromium\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="UI Components › Dial pad works correctly" classname="call-flow.spec.ts" time="5.74">
+<failure message="call-flow.spec.ts:189:7 Dial pad works correctly" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:189:7 › UI Components › Dial pad works correctly ──────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:190:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Dial-pad-works-correctly-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Dial-pad-works-correctly-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-UI-Components-Dial-pad-works-correctly-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-UI-Components-Dial-pad-works-correctly-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-UI-Components-Dial-pad-works-correctly-chromium\video.webm]]
+
+[[ATTACHMENT|call-flow-UI-Components-Dial-pad-works-correctly-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="UI Components › Mute button works during call" classname="call-flow.spec.ts" time="5.891">
+<failure message="call-flow.spec.ts:205:7 Mute button works during call" type="FAILURE">
+<![CDATA[  [chromium] › call-flow.spec.ts:205:7 › UI Components › Mute button works during call ─────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:212:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Mute-button-works-during-call-chromium\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Mute-button-works-during-call-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-UI-Components-Mute-button-works-during-call-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-UI-Components-Mute-button-works-during-call-chromium\test-failed-2.png]]
+
+[[ATTACHMENT|call-flow-UI-Components-Mute-button-works-during-call-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-UI-Components-Mute-button-works-during-call-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="all-pages-verification.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="firefox" tests="40" failures="40" skipped="0" time="1.201" errors="0">
+<testcase name="All Pages Verification Suite › Home Page (/) › should load home page successfully" classname="all-pages-verification.spec.ts" time="0.022">
+<failure message="all-pages-verification.spec.ts:15:9 should load home page successfully" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:15:9 › All Pages Verification Suite › Home Page (/) › should load home page successfully 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags" classname="all-pages-verification.spec.ts" time="0.017">
+<failure message="all-pages-verification.spec.ts:26:9 should have correct SEO meta tags" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:26:9 › All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows" classname="all-pages-verification.spec.ts" time="0.015">
+<failure message="all-pages-verification.spec.ts:42:9 should scroll properly if content overflows" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:42:9 › All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling" classname="all-pages-verification.spec.ts" time="0.026">
+<failure message="all-pages-verification.spec.ts:62:9 should have cyberpunk theme styling" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:62:9 › All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page" classname="all-pages-verification.spec.ts" time="0.045">
+<failure message="all-pages-verification.spec.ts:82:9 should load privacy policy page" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:82:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling" classname="all-pages-verification.spec.ts" time="0.023">
+<failure message="all-pages-verification.spec.ts:90:9 should have all privacy sections visible after scrolling" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:90:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top" classname="all-pages-verification.spec.ts" time="0.053">
+<failure message="all-pages-verification.spec.ts:113:9 should scroll to bottom and back to top" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:113:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling" classname="all-pages-verification.spec.ts" time="0.022">
+<failure message="all-pages-verification.spec.ts:139:9 should have sticky header when scrolling" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:139:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button" classname="all-pages-verification.spec.ts" time="0.02">
+<failure message="all-pages-verification.spec.ts:150:9 should navigate back to home via EXIT button" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:150:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button" classname="all-pages-verification.spec.ts" time="0.023">
+<failure message="all-pages-verification.spec.ts:160:9 should navigate back via RETURN_TO_SECURE_LINE button" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:160:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex" classname="all-pages-verification.spec.ts" time="0.015">
+<failure message="all-pages-verification.spec.ts:172:9 should have correct SEO meta tags with noindex" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:172:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling" classname="all-pages-verification.spec.ts" time="0.028">
+<failure message="all-pages-verification.spec.ts:180:9 should have custom scrollbar styling" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:180:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should load unauthorized component" classname="all-pages-verification.spec.ts" time="0.032">
+<failure message="all-pages-verification.spec.ts:199:9 should load unauthorized component" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:199:9 › All Pages Verification Suite › Login Page (/login) › should load unauthorized component 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button" classname="all-pages-verification.spec.ts" time="0.014">
+<failure message="all-pages-verification.spec.ts:206:9 should have AUTHENTICATE button" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:206:9 › All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have blurred background effect" classname="all-pages-verification.spec.ts" time="0.015">
+<failure message="all-pages-verification.spec.ts:212:9 should have blurred background effect" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:212:9 › All Pages Verification Suite › Login Page (/login) › should have blurred background effect 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have noindex meta tag" classname="all-pages-verification.spec.ts" time="0.019">
+<failure message="all-pages-verification.spec.ts:220:9 should have noindex meta tag" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:220:9 › All Pages Verification Suite › Login Page (/login) › should have noindex meta tag 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes" classname="all-pages-verification.spec.ts" time="0.055">
+<failure message="all-pages-verification.spec.ts:233:9 should show 404 for invalid routes" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:233:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap)" classname="all-pages-verification.spec.ts" time="0.024">
+<failure message="all-pages-verification.spec.ts:240:9 should show 404 for /500 route (404 trap)" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:240:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap) 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap)" classname="all-pages-verification.spec.ts" time="0.016">
+<failure message="all-pages-verification.spec.ts:248:9 should show 404 for /403 route (404 trap)" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:248:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap) 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have glitching text effect" classname="all-pages-verification.spec.ts" time="0.051">
+<failure message="all-pages-verification.spec.ts:254:9 should have glitching text effect" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:254:9 › All Pages Verification Suite › 404 Not Found Page › should have glitching text effect 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button" classname="all-pages-verification.spec.ts" time="0.014">
+<failure message="all-pages-verification.spec.ts:265:9 should have RETURN_TO_BASE button" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:265:9 › All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators" classname="all-pages-verification.spec.ts" time="0.052">
+<failure message="all-pages-verification.spec.ts:276:9 should have status bar with indicators" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:276:9 › All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated" classname="all-pages-verification.spec.ts" time="0.022">
+<failure message="all-pages-verification.spec.ts:289:9 should redirect /app to /login when not authenticated" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:289:9 › All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated" classname="all-pages-verification.spec.ts" time="0.059">
+<failure message="all-pages-verification.spec.ts:302:9 should redirect /call/:id to /login when not authenticated" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:302:9 › All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated" classname="all-pages-verification.spec.ts" time="0.014">
+<failure message="all-pages-verification.spec.ts:312:9 should allow access to /app when authenticated" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:312:9 › All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy" classname="all-pages-verification.spec.ts" time="0.014">
+<failure message="all-pages-verification.spec.ts:334:9 should navigate from home to privacy" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:334:9 › All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button" classname="all-pages-verification.spec.ts" time="0.023">
+<failure message="all-pages-verification.spec.ts:344:9 should navigate back using browser back button" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:344:9 › All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button" classname="all-pages-verification.spec.ts" time="0.032">
+<failure message="all-pages-verification.spec.ts:354:9 should navigate forward using browser forward button" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:354:9 › All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on mobile viewport" classname="all-pages-verification.spec.ts" time="0.021">
+<failure message="all-pages-verification.spec.ts:371:9 should work on mobile viewport" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:371:9 › All Pages Verification Suite › Responsive Design › should work on mobile viewport 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on tablet viewport" classname="all-pages-verification.spec.ts" time="0.069">
+<failure message="all-pages-verification.spec.ts:385:9 should work on tablet viewport" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:385:9 › All Pages Verification Suite › Responsive Design › should work on tablet viewport 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on desktop viewport" classname="all-pages-verification.spec.ts" time="0.024">
+<failure message="all-pages-verification.spec.ts:392:9 should work on desktop viewport" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:392:9 › All Pages Verification Suite › Responsive Design › should work on desktop viewport 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page" classname="all-pages-verification.spec.ts" time="0.046">
+<failure message="all-pages-verification.spec.ts:405:9 should have proper heading hierarchy on home page" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:405:9 › All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have keyboard navigation support" classname="all-pages-verification.spec.ts" time="0.064">
+<failure message="all-pages-verification.spec.ts:412:9 should have keyboard navigation support" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:412:9 › All Pages Verification Suite › Accessibility › should have keyboard navigation support 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have sufficient color contrast" classname="all-pages-verification.spec.ts" time="0.039">
+<failure message="all-pages-verification.spec.ts:423:9 should have sufficient color contrast" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:423:9 › All Pages Verification Suite › Accessibility › should have sufficient color contrast 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should load home page in reasonable time" classname="all-pages-verification.spec.ts" time="0.015">
+<failure message="all-pages-verification.spec.ts:440:9 should load home page in reasonable time" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:440:9 › All Pages Verification Suite › Performance › should load home page in reasonable time 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should have smooth scrolling on privacy page" classname="all-pages-verification.spec.ts" time="0.014">
+<failure message="all-pages-verification.spec.ts:449:9 should have smooth scrolling on privacy page" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:449:9 › All Pages Verification Suite › Performance › should have smooth scrolling on privacy page 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages" classname="all-pages-verification.spec.ts" time="0.015">
+<failure message="all-pages-verification.spec.ts:471:9 should have consistent theme across all pages" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:471:9 › All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme" classname="all-pages-verification.spec.ts" time="0.016">
+<failure message="all-pages-verification.spec.ts:489:9 should have neon green color scheme" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:489:9 › All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should handle network errors gracefully" classname="all-pages-verification.spec.ts" time="0.034">
+<failure message="all-pages-verification.spec.ts:503:9 should handle network errors gracefully" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:503:9 › All Pages Verification Suite › Error Handling › should handle network errors gracefully 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should recover from navigation errors" classname="all-pages-verification.spec.ts" time="0.079">
+<failure message="all-pages-verification.spec.ts:514:9 should recover from navigation errors" type="FAILURE">
+<![CDATA[  [firefox] › all-pages-verification.spec.ts:514:9 › All Pages Verification Suite › Error Handling › should recover from navigation errors 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="call-flow.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="firefox" tests="8" failures="8" skipped="0" time="0.281" errors="0">
+<testcase name="Complete Call Flow › User receives extension on connection" classname="call-flow.spec.ts" time="0.032">
+<failure message="call-flow.spec.ts:27:7 User receives extension on connection" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:27:7 › Complete Call Flow › User receives extension on connection ──
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Two users can establish a call" classname="call-flow.spec.ts" time="0.035">
+<failure message="call-flow.spec.ts:38:7 Two users can establish a call" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:38:7 › Complete Call Flow › Two users can establish a call ─────────
+
+    Error: browser.newContext: Unknown permission: microphone
+
+      38 |   test('Two users can establish a call', async ({ browser }: { browser: Browser }) => {
+      39 |     // Create two browser contexts (two users)
+    > 40 |     const context1 = await browser.newContext({ permissions: ['microphone'] });
+         |                      ^
+      41 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+      42 |     
+      43 |     const userA = await context1.newPage();
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:40:22
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › User can reject incoming call" classname="call-flow.spec.ts" time="0.018">
+<failure message="call-flow.spec.ts:96:7 User can reject incoming call" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:96:7 › Complete Call Flow › User can reject incoming call ──────────
+
+    Error: browser.newContext: Unknown permission: microphone
+
+       95 |
+       96 |   test('User can reject incoming call', async ({ browser }: { browser: Browser }) => {
+    >  97 |     const context1 = await browser.newContext({ permissions: ['microphone'] });
+          |                      ^
+       98 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+       99 |     
+      100 |     const userA = await context1.newPage();
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:97:22
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Handles microphone permission denial gracefully" classname="call-flow.spec.ts" time="0.058">
+<failure message="call-flow.spec.ts:129:7 Handles microphone permission denial gracefully" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:129:7 › Complete Call Flow › Handles microphone permission denial gracefully 
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Call log displays correctly" classname="call-flow.spec.ts" time="0.021">
+<failure message="call-flow.spec.ts:149:7 Call log displays correctly" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:149:7 › Complete Call Flow › Call log displays correctly ───────────
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Connection status updates correctly" classname="call-flow.spec.ts" time="0.028">
+<failure message="call-flow.spec.ts:167:7 Connection status updates correctly" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:167:7 › Complete Call Flow › Connection status updates correctly ───
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="UI Components › Dial pad works correctly" classname="call-flow.spec.ts" time="0.056">
+<failure message="call-flow.spec.ts:189:7 Dial pad works correctly" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:189:7 › UI Components › Dial pad works correctly ───────────────────
+
+    Error: browser.newContext: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="UI Components › Mute button works during call" classname="call-flow.spec.ts" time="0.033">
+<failure message="call-flow.spec.ts:205:7 Mute button works during call" type="FAILURE">
+<![CDATA[  [firefox] › call-flow.spec.ts:205:7 › UI Components › Mute button works during call ──────────────
+
+    Error: browser.newContext: Unknown permission: microphone
+
+      204 |
+      205 |   test('Mute button works during call', async ({ browser }: { browser: Browser }) => {
+    > 206 |     const context1 = await browser.newContext({ permissions: ['microphone'] });
+          |                      ^
+      207 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+      208 |     
+      209 |     const userA = await context1.newPage();
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:206:22
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="all-pages-verification.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="webkit" tests="40" failures="40" skipped="0" time="8.071" errors="0">
+<testcase name="All Pages Verification Suite › Home Page (/) › should load home page successfully" classname="all-pages-verification.spec.ts" time="0.232">
+<failure message="all-pages-verification.spec.ts:15:9 should load home page successfully" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:15:9 › All Pages Verification Suite › Home Page (/) › should load home page successfully 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags" classname="all-pages-verification.spec.ts" time="0.224">
+<failure message="all-pages-verification.spec.ts:26:9 should have correct SEO meta tags" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:26:9 › All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows" classname="all-pages-verification.spec.ts" time="0.158">
+<failure message="all-pages-verification.spec.ts:42:9 should scroll properly if content overflows" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:42:9 › All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling" classname="all-pages-verification.spec.ts" time="0.255">
+<failure message="all-pages-verification.spec.ts:62:9 should have cyberpunk theme styling" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:62:9 › All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page" classname="all-pages-verification.spec.ts" time="0.227">
+<failure message="all-pages-verification.spec.ts:82:9 should load privacy policy page" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:82:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling" classname="all-pages-verification.spec.ts" time="0.185">
+<failure message="all-pages-verification.spec.ts:90:9 should have all privacy sections visible after scrolling" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:90:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top" classname="all-pages-verification.spec.ts" time="0.225">
+<failure message="all-pages-verification.spec.ts:113:9 should scroll to bottom and back to top" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:113:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling" classname="all-pages-verification.spec.ts" time="0.217">
+<failure message="all-pages-verification.spec.ts:139:9 should have sticky header when scrolling" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:139:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button" classname="all-pages-verification.spec.ts" time="0.156">
+<failure message="all-pages-verification.spec.ts:150:9 should navigate back to home via EXIT button" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:150:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button" classname="all-pages-verification.spec.ts" time="0.206">
+<failure message="all-pages-verification.spec.ts:160:9 should navigate back via RETURN_TO_SECURE_LINE button" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:160:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex" classname="all-pages-verification.spec.ts" time="0.273">
+<failure message="all-pages-verification.spec.ts:172:9 should have correct SEO meta tags with noindex" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:172:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling" classname="all-pages-verification.spec.ts" time="0.218">
+<failure message="all-pages-verification.spec.ts:180:9 should have custom scrollbar styling" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:180:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should load unauthorized component" classname="all-pages-verification.spec.ts" time="0.18">
+<failure message="all-pages-verification.spec.ts:199:9 should load unauthorized component" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:199:9 › All Pages Verification Suite › Login Page (/login) › should load unauthorized component 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button" classname="all-pages-verification.spec.ts" time="0.159">
+<failure message="all-pages-verification.spec.ts:206:9 should have AUTHENTICATE button" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:206:9 › All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have blurred background effect" classname="all-pages-verification.spec.ts" time="0.219">
+<failure message="all-pages-verification.spec.ts:212:9 should have blurred background effect" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:212:9 › All Pages Verification Suite › Login Page (/login) › should have blurred background effect 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have noindex meta tag" classname="all-pages-verification.spec.ts" time="0.25">
+<failure message="all-pages-verification.spec.ts:220:9 should have noindex meta tag" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:220:9 › All Pages Verification Suite › Login Page (/login) › should have noindex meta tag 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes" classname="all-pages-verification.spec.ts" time="0.242">
+<failure message="all-pages-verification.spec.ts:233:9 should show 404 for invalid routes" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:233:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap)" classname="all-pages-verification.spec.ts" time="0.279">
+<failure message="all-pages-verification.spec.ts:240:9 should show 404 for /500 route (404 trap)" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:240:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap) 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap)" classname="all-pages-verification.spec.ts" time="0.215">
+<failure message="all-pages-verification.spec.ts:248:9 should show 404 for /403 route (404 trap)" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:248:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap) 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have glitching text effect" classname="all-pages-verification.spec.ts" time="0.232">
+<failure message="all-pages-verification.spec.ts:254:9 should have glitching text effect" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:254:9 › All Pages Verification Suite › 404 Not Found Page › should have glitching text effect 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button" classname="all-pages-verification.spec.ts" time="0.197">
+<failure message="all-pages-verification.spec.ts:265:9 should have RETURN_TO_BASE button" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:265:9 › All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators" classname="all-pages-verification.spec.ts" time="0.219">
+<failure message="all-pages-verification.spec.ts:276:9 should have status bar with indicators" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:276:9 › All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated" classname="all-pages-verification.spec.ts" time="0.174">
+<failure message="all-pages-verification.spec.ts:289:9 should redirect /app to /login when not authenticated" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:289:9 › All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated" classname="all-pages-verification.spec.ts" time="0.242">
+<failure message="all-pages-verification.spec.ts:302:9 should redirect /call/:id to /login when not authenticated" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:302:9 › All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated" classname="all-pages-verification.spec.ts" time="0.129">
+<failure message="all-pages-verification.spec.ts:312:9 should allow access to /app when authenticated" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:312:9 › All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy" classname="all-pages-verification.spec.ts" time="0.145">
+<failure message="all-pages-verification.spec.ts:334:9 should navigate from home to privacy" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:334:9 › All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button" classname="all-pages-verification.spec.ts" time="0.154">
+<failure message="all-pages-verification.spec.ts:344:9 should navigate back using browser back button" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:344:9 › All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button" classname="all-pages-verification.spec.ts" time="0.191">
+<failure message="all-pages-verification.spec.ts:354:9 should navigate forward using browser forward button" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:354:9 › All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on mobile viewport" classname="all-pages-verification.spec.ts" time="0.227">
+<failure message="all-pages-verification.spec.ts:371:9 should work on mobile viewport" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:371:9 › All Pages Verification Suite › Responsive Design › should work on mobile viewport 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on tablet viewport" classname="all-pages-verification.spec.ts" time="0.149">
+<failure message="all-pages-verification.spec.ts:385:9 should work on tablet viewport" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:385:9 › All Pages Verification Suite › Responsive Design › should work on tablet viewport 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on desktop viewport" classname="all-pages-verification.spec.ts" time="0.157">
+<failure message="all-pages-verification.spec.ts:392:9 should work on desktop viewport" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:392:9 › All Pages Verification Suite › Responsive Design › should work on desktop viewport 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page" classname="all-pages-verification.spec.ts" time="0.156">
+<failure message="all-pages-verification.spec.ts:405:9 should have proper heading hierarchy on home page" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:405:9 › All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have keyboard navigation support" classname="all-pages-verification.spec.ts" time="0.119">
+<failure message="all-pages-verification.spec.ts:412:9 should have keyboard navigation support" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:412:9 › All Pages Verification Suite › Accessibility › should have keyboard navigation support 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have sufficient color contrast" classname="all-pages-verification.spec.ts" time="0.183">
+<failure message="all-pages-verification.spec.ts:423:9 should have sufficient color contrast" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:423:9 › All Pages Verification Suite › Accessibility › should have sufficient color contrast 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should load home page in reasonable time" classname="all-pages-verification.spec.ts" time="0.228">
+<failure message="all-pages-verification.spec.ts:440:9 should load home page in reasonable time" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:440:9 › All Pages Verification Suite › Performance › should load home page in reasonable time 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should have smooth scrolling on privacy page" classname="all-pages-verification.spec.ts" time="0.196">
+<failure message="all-pages-verification.spec.ts:449:9 should have smooth scrolling on privacy page" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:449:9 › All Pages Verification Suite › Performance › should have smooth scrolling on privacy page 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages" classname="all-pages-verification.spec.ts" time="0.253">
+<failure message="all-pages-verification.spec.ts:471:9 should have consistent theme across all pages" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:471:9 › All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme" classname="all-pages-verification.spec.ts" time="0.158">
+<failure message="all-pages-verification.spec.ts:489:9 should have neon green color scheme" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:489:9 › All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should handle network errors gracefully" classname="all-pages-verification.spec.ts" time="0.24">
+<failure message="all-pages-verification.spec.ts:503:9 should handle network errors gracefully" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:503:9 › All Pages Verification Suite › Error Handling › should handle network errors gracefully 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should recover from navigation errors" classname="all-pages-verification.spec.ts" time="0.202">
+<failure message="all-pages-verification.spec.ts:514:9 should recover from navigation errors" type="FAILURE">
+<![CDATA[  [webkit] › all-pages-verification.spec.ts:514:9 › All Pages Verification Suite › Error Handling › should recover from navigation errors 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="call-flow.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="webkit" tests="8" failures="8" skipped="0" time="1.615" errors="0">
+<testcase name="Complete Call Flow › User receives extension on connection" classname="call-flow.spec.ts" time="0.246">
+<failure message="call-flow.spec.ts:27:7 User receives extension on connection" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:27:7 › Complete Call Flow › User receives extension on connection ───
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Two users can establish a call" classname="call-flow.spec.ts" time="0.174">
+<failure message="call-flow.spec.ts:38:7 Two users can establish a call" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:38:7 › Complete Call Flow › Two users can establish a call ──────────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+
+      41 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+      42 |     
+    > 43 |     const userA = await context1.newPage();
+         |                                  ^
+      44 |     const userB = await context2.newPage();
+      45 |
+      46 |     // Connect both users
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:43:34
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › User can reject incoming call" classname="call-flow.spec.ts" time="0.111">
+<failure message="call-flow.spec.ts:96:7 User can reject incoming call" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:96:7 › Complete Call Flow › User can reject incoming call ───────────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+
+       98 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+       99 |     
+    > 100 |     const userA = await context1.newPage();
+          |                                  ^
+      101 |     const userB = await context2.newPage();
+      102 |
+      103 |     const extensionA = await connectUserAndGetExtension(userA);
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:100:34
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Handles microphone permission denial gracefully" classname="call-flow.spec.ts" time="0.18">
+<failure message="call-flow.spec.ts:129:7 Handles microphone permission denial gracefully" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:129:7 › Complete Call Flow › Handles microphone permission denial gracefully 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Call log displays correctly" classname="call-flow.spec.ts" time="0.195">
+<failure message="call-flow.spec.ts:149:7 Call log displays correctly" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:149:7 › Complete Call Flow › Call log displays correctly ────────────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Connection status updates correctly" classname="call-flow.spec.ts" time="0.313">
+<failure message="call-flow.spec.ts:167:7 Connection status updates correctly" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:167:7 › Complete Call Flow › Connection status updates correctly ────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="UI Components › Dial pad works correctly" classname="call-flow.spec.ts" time="0.229">
+<failure message="call-flow.spec.ts:189:7 Dial pad works correctly" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:189:7 › UI Components › Dial pad works correctly ────────────────────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="UI Components › Mute button works during call" classname="call-flow.spec.ts" time="0.167">
+<failure message="call-flow.spec.ts:205:7 Mute button works during call" type="FAILURE">
+<![CDATA[  [webkit] › call-flow.spec.ts:205:7 › UI Components › Mute button works during call ───────────────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+
+      207 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+      208 |     
+    > 209 |     const userA = await context1.newPage();
+          |                                  ^
+      210 |     const userB = await context2.newPage();
+      211 |
+      212 |     const extensionA = await connectUserAndGetExtension(userA);
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:209:34
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="all-pages-verification.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="Mobile Chrome" tests="40" failures="10" skipped="0" time="66.92" errors="0">
+<testcase name="All Pages Verification Suite › Home Page (/) › should load home page successfully" classname="all-pages-verification.spec.ts" time="1.088">
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags" classname="all-pages-verification.spec.ts" time="1.302">
+<failure message="all-pages-verification.spec.ts:26:9 should have correct SEO meta tags" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:26:9 › All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags 
+
+    Error: locator.getAttribute: Error: strict mode violation: locator('meta[name="description"]') resolved to 2 elements:
+        1) <meta name="description" content="Secure and Anonymous Audio Calling System"/> aka locator('meta[name="description"]').first()
+        2) <meta data-rh="true" name="description" content="Encrypted peer-to-peer voice calls with zero logs. No registration, no tracking, complete anonymity. WebRTC-powered secure communication platform."/> aka locator('meta[name="description"]').nth(1)
+
+    Call log:
+      - waiting for locator('meta[name="description"]')
+
+
+      32 |       
+      33 |       // Check meta description
+    > 34 |       const description = await page.locator('meta[name="description"]').getAttribute('content');
+         |                                                                          ^
+      35 |       expect(description).toContain('Encrypted peer-to-peer');
+      36 |       
+      37 |       // Check Open Graph tags
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:34:74
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-286f0--have-correct-SEO-meta-tags-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-286f0--have-correct-SEO-meta-tags-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-286f0--have-correct-SEO-meta-tags-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-286f0--have-correct-SEO-meta-tags-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-286f0--have-correct-SEO-meta-tags-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-286f0--have-correct-SEO-meta-tags-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows" classname="all-pages-verification.spec.ts" time="1.121">
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling" classname="all-pages-verification.spec.ts" time="1.117">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page" classname="all-pages-verification.spec.ts" time="1.08">
+<failure message="all-pages-verification.spec.ts:82:9 should load privacy policy page" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:82:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      84 |       
+      85 |       // Verify page loaded
+    > 86 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+         |                                                        ^
+      87 |       await expect(page.locator('text=CORE_PRINCIPLES')).toBeVisible();
+      88 |     });
+      89 |
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:86:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-6687d-ld-load-privacy-policy-page-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-6687d-ld-load-privacy-policy-page-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-6687d-ld-load-privacy-policy-page-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-6687d-ld-load-privacy-policy-page-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-6687d-ld-load-privacy-policy-page-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-6687d-ld-load-privacy-policy-page-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling" classname="all-pages-verification.spec.ts" time="1.669">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top" classname="all-pages-verification.spec.ts" time="1.961">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling" classname="all-pages-verification.spec.ts" time="1.271">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button" classname="all-pages-verification.spec.ts" time="1.783">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button" classname="all-pages-verification.spec.ts" time="1.4">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex" classname="all-pages-verification.spec.ts" time="1.003">
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling" classname="all-pages-verification.spec.ts" time="1.198">
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should load unauthorized component" classname="all-pages-verification.spec.ts" time="2.347">
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button" classname="all-pages-verification.spec.ts" time="6.524">
+<failure message="all-pages-verification.spec.ts:206:9 should have AUTHENTICATE button" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:206:9 › All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('button:has-text("AUTHENTICATE")')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('button:has-text("AUTHENTICATE")')
+
+
+      207 |       await page.goto('/login');
+      208 |       
+    > 209 |       await expect(page.locator('button:has-text("AUTHENTICATE")')).toBeVisible();
+          |                                                                     ^
+      210 |     });
+      211 |
+      212 |     test('should have blurred background effect', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:209:69
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-48a1b-ld-have-AUTHENTICATE-button-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have blurred background effect" classname="all-pages-verification.spec.ts" time="2.08">
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have noindex meta tag" classname="all-pages-verification.spec.ts" time="2.003">
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes" classname="all-pages-verification.spec.ts" time="1.779">
+<failure message="all-pages-verification.spec.ts:233:9 should show 404 for invalid routes" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:233:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=404')
+    Expected: visible
+    Error: strict mode violation: locator('text=404') resolved to 2 elements:
+        1) <h1 class="text-8xl font-bold text-[#00ff41] text-glow font-mono tracking-[0.3em]">404</h1> aka getByRole('heading', { name: '404' })
+        2) <span>ERROR_CODE: 404</span> aka getByText('ERROR_CODE:')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=404')
+
+
+      234 |       await page.goto('/invalid-route-that-does-not-exist');
+      235 |       
+    > 236 |       await expect(page.locator('text=404')).toBeVisible();
+          |                                              ^
+      237 |       await expect(page.locator('text=SIGNAL_LOST')).toBeVisible();
+      238 |     });
+      239 |
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:236:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-34dec-show-404-for-invalid-routes-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-34dec-show-404-for-invalid-routes-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-34dec-show-404-for-invalid-routes-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-34dec-show-404-for-invalid-routes-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-34dec-show-404-for-invalid-routes-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-34dec-show-404-for-invalid-routes-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap)" classname="all-pages-verification.spec.ts" time="2.023">
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap)" classname="all-pages-verification.spec.ts" time="1.718">
+<failure message="all-pages-verification.spec.ts:248:9 should show 404 for /403 route (404 trap)" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:248:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap) 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=404')
+    Expected: visible
+    Error: strict mode violation: locator('text=404') resolved to 2 elements:
+        1) <h1 class="text-8xl font-bold text-[#00ff41] text-glow font-mono tracking-[0.3em]">404</h1> aka getByRole('heading', { name: '404' })
+        2) <span>ERROR_CODE: 404</span> aka getByText('ERROR_CODE:')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=404')
+
+
+      249 |       await page.goto('/403');
+      250 |       
+    > 251 |       await expect(page.locator('text=404')).toBeVisible();
+          |                                              ^
+      252 |     });
+      253 |
+      254 |     test('should have glitching text effect', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:251:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7c541-404-for-403-route-404-trap--Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7c541-404-for-403-route-404-trap--Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-7c541-404-for-403-route-404-trap--Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-7c541-404-for-403-route-404-trap--Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-7c541-404-for-403-route-404-trap--Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-7c541-404-for-403-route-404-trap--Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have glitching text effect" classname="all-pages-verification.spec.ts" time="2.59">
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button" classname="all-pages-verification.spec.ts" time="1.396">
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators" classname="all-pages-verification.spec.ts" time="1.596">
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated" classname="all-pages-verification.spec.ts" time="2.903">
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated" classname="all-pages-verification.spec.ts" time="2.421">
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated" classname="all-pages-verification.spec.ts" time="1.355">
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy" classname="all-pages-verification.spec.ts" time="0.817">
+<failure message="all-pages-verification.spec.ts:334:9 should navigate from home to privacy" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:334:9 › All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      339 |       
+      340 |       await expect(page).toHaveURL('/privacy');
+    > 341 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+          |                                                        ^
+      342 |     });
+      343 |
+      344 |     test('should navigate back using browser back button', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:341:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-44591-vigate-from-home-to-privacy-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-44591-vigate-from-home-to-privacy-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-44591-vigate-from-home-to-privacy-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-44591-vigate-from-home-to-privacy-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-44591-vigate-from-home-to-privacy-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-44591-vigate-from-home-to-privacy-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button" classname="all-pages-verification.spec.ts" time="1.401">
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button" classname="all-pages-verification.spec.ts" time="1.121">
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on mobile viewport" classname="all-pages-verification.spec.ts" time="0.765">
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on tablet viewport" classname="all-pages-verification.spec.ts" time="0.963">
+<failure message="all-pages-verification.spec.ts:385:9 should work on tablet viewport" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:385:9 › All Pages Verification Suite › Responsive Design › should work on tablet viewport 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      387 |       await page.goto('/privacy');
+      388 |       
+    > 389 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+          |                                                        ^
+      390 |     });
+      391 |
+      392 |     test('should work on desktop viewport', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:389:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-9b3b8-uld-work-on-tablet-viewport-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on desktop viewport" classname="all-pages-verification.spec.ts" time="1.972">
+<failure message="all-pages-verification.spec.ts:392:9 should work on desktop viewport" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:392:9 › All Pages Verification Suite › Responsive Design › should work on desktop viewport 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=PROTOCOL_ZERO')
+    Expected: visible
+    Error: strict mode violation: locator('text=PROTOCOL_ZERO') resolved to 2 elements:
+        1) <h1 class="text-2xl font-bold text-[#00ff41] text-glow font-mono">[PROTOCOL_ZERO]</h1> aka getByRole('heading', { name: '[PROTOCOL_ZERO]' })
+        2) <div class="text-center text-[#00ff41] font-mono text-xs opacity-50">PROTOCOL_ZERO | PRIVACY_BY_DEFAULT | ANONYMITY_BY…</div> aka getByText('PROTOCOL_ZERO |')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=PROTOCOL_ZERO')
+
+
+      394 |       await page.goto('/privacy');
+      395 |       
+    > 396 |       await expect(page.locator('text=PROTOCOL_ZERO')).toBeVisible();
+          |                                                        ^
+      397 |     });
+      398 |   });
+      399 |
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:396:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-7a62d-ld-work-on-desktop-viewport-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page" classname="all-pages-verification.spec.ts" time="1.352">
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have keyboard navigation support" classname="all-pages-verification.spec.ts" time="1.263">
+<failure message="all-pages-verification.spec.ts:412:9 should have keyboard navigation support" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:412:9 › All Pages Verification Suite › Accessibility › should have keyboard navigation support 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "BUTTON"
+    Received: "BODY"
+
+      418 |       // Should be able to activate with Enter
+      419 |       const focused = await page.evaluate(() => document.activeElement?.tagName);
+    > 420 |       expect(focused).toBe('BUTTON');
+          |                       ^
+      421 |     });
+      422 |
+      423 |     test('should have sufficient color contrast', async ({ page }) => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:420:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-51ca4-keyboard-navigation-support-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-51ca4-keyboard-navigation-support-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-51ca4-keyboard-navigation-support-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-51ca4-keyboard-navigation-support-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-51ca4-keyboard-navigation-support-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-51ca4-keyboard-navigation-support-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have sufficient color contrast" classname="all-pages-verification.spec.ts" time="1.543">
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should load home page in reasonable time" classname="all-pages-verification.spec.ts" time="1.243">
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should have smooth scrolling on privacy page" classname="all-pages-verification.spec.ts" time="1.375">
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages" classname="all-pages-verification.spec.ts" time="2.672">
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme" classname="all-pages-verification.spec.ts" time="1.235">
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should handle network errors gracefully" classname="all-pages-verification.spec.ts" time="0.472">
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should recover from navigation errors" classname="all-pages-verification.spec.ts" time="1.998">
+<failure message="all-pages-verification.spec.ts:514:9 should recover from navigation errors" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › all-pages-verification.spec.ts:514:9 › All Pages Verification Suite › Error Handling › should recover from navigation errors 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('text=404')
+    Expected: visible
+    Error: strict mode violation: locator('text=404') resolved to 2 elements:
+        1) <h1 class="text-8xl font-bold text-[#00ff41] text-glow font-mono tracking-[0.3em]">404</h1> aka getByRole('heading', { name: '404' })
+        2) <span>ERROR_CODE: 404</span> aka getByText('ERROR_CODE:')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=404')
+
+
+      517 |       
+      518 |       // Should show 404
+    > 519 |       await expect(page.locator('text=404')).toBeVisible();
+          |                                              ^
+      520 |       
+      521 |       // Navigate back to valid route
+      522 |       await page.goto('/');
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\all-pages-verification.spec.ts:519:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-738d3-over-from-navigation-errors-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\all-pages-verification-All-738d3-over-from-navigation-errors-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\all-pages-verification-All-738d3-over-from-navigation-errors-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|all-pages-verification-All-738d3-over-from-navigation-errors-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|all-pages-verification-All-738d3-over-from-navigation-errors-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|all-pages-verification-All-738d3-over-from-navigation-errors-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="call-flow.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="Mobile Chrome" tests="8" failures="8" skipped="0" time="71.181" errors="0">
+<testcase name="Complete Call Flow › User receives extension on connection" classname="call-flow.spec.ts" time="5.835">
+<failure message="call-flow.spec.ts:27:7 User receives extension on connection" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:27:7 › Complete Call Flow › User receives extension on connection 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:28:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-205f2-ves-extension-on-connection-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Two users can establish a call" classname="call-flow.spec.ts" time="5.748">
+<failure message="call-flow.spec.ts:38:7 Two users can establish a call" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:38:7 › Complete Call Flow › Two users can establish a call ───
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:47:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-Mobile-Chrome\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-Mobile-Chrome\test-failed-2.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Two-users-can-establish-a-call-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › User can reject incoming call" classname="call-flow.spec.ts" time="5.808">
+<failure message="call-flow.spec.ts:96:7 User can reject incoming call" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:96:7 › Complete Call Flow › User can reject incoming call ────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:103:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-User-can-reject-incoming-call-Mobile-Chrome\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-User-can-reject-incoming-call-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Flow-User-can-reject-incoming-call-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Flow-User-can-reject-incoming-call-Mobile-Chrome\test-failed-2.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-User-can-reject-incoming-call-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-User-can-reject-incoming-call-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Handles microphone permission denial gracefully" classname="call-flow.spec.ts" time="30.367">
+<failure message="call-flow.spec.ts:129:7 Handles microphone permission denial gracefully" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:129:7 › Complete Call Flow › Handles microphone permission denial gracefully 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="user-extension"]') to be visible
+
+
+      134 |     
+      135 |     // Wait for connection
+    > 136 |     await page.waitForSelector('[data-testid="user-extension"]');
+          |                ^
+      137 |     
+      138 |     const extension = await page.locator('[data-testid="user-extension"]').textContent();
+      139 |     
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:136:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-af8fb-ermission-denial-gracefully-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Call log displays correctly" classname="call-flow.spec.ts" time="6.184">
+<failure message="call-flow.spec.ts:149:7 Call log displays correctly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:149:7 › Complete Call Flow › Call log displays correctly ─────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:150:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Call-log-displays-correctly-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Flow-Call-log-displays-correctly-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Flow-Call-log-displays-correctly-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Call-log-displays-correctly-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Call-log-displays-correctly-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Flow-Call-log-displays-correctly-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Call Flow › Connection status updates correctly" classname="call-flow.spec.ts" time="5.877">
+<failure message="call-flow.spec.ts:167:7 Connection status updates correctly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:167:7 › Complete Call Flow › Connection status updates correctly 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('[data-testid="connection-status"]')
+    Expected: "Connected"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" with timeout 5000ms
+      - waiting for locator('[data-testid="connection-status"]')
+
+
+      170 |     // Initial connection
+      171 |     const connectionStatus = page.locator('[data-testid="connection-status"]');
+    > 172 |     await expect(connectionStatus).toHaveText('Connected', { timeout: 5000 });
+          |                                    ^
+      173 |
+      174 |     // Simulate disconnect (close page and reconnect)
+      175 |     await page.evaluate(() => {
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:172:36
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|call-flow-Complete-Call-Fl-e64d4-on-status-updates-correctly-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="UI Components › Dial pad works correctly" classname="call-flow.spec.ts" time="5.612">
+<failure message="call-flow.spec.ts:189:7 Dial pad works correctly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:189:7 › UI Components › Dial pad works correctly ─────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:190:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Dial-pad-works-correctly-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Dial-pad-works-correctly-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-UI-Components-Dial-pad-works-correctly-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-UI-Components-Dial-pad-works-correctly-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-UI-Components-Dial-pad-works-correctly-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|call-flow-UI-Components-Dial-pad-works-correctly-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="UI Components › Mute button works during call" classname="call-flow.spec.ts" time="5.75">
+<failure message="call-flow.spec.ts:205:7 Mute button works during call" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › call-flow.spec.ts:205:7 › UI Components › Mute button works during call ────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('[data-testid="user-extension"]')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('[data-testid="user-extension"]')
+
+
+      18 |   // Wait for WebSocket connection and extension assignment
+      19 |   const extensionElement = page.locator('[data-testid="user-extension"]');
+    > 20 |   await expect(extensionElement).toBeVisible({ timeout: 5000 });
+         |                                  ^
+      21 |   
+      22 |   const extension = await extensionElement.textContent();
+      23 |   return extension?.trim() || '';
+        at connectUserAndGetExtension (C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:20:34)
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:212:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Mute-button-works-during-call-Mobile-Chrome\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\call-flow-UI-Components-Mute-button-works-during-call-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\call-flow-UI-Components-Mute-button-works-during-call-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|call-flow-UI-Components-Mute-button-works-during-call-Mobile-Chrome\test-failed-2.png]]
+
+[[ATTACHMENT|call-flow-UI-Components-Mute-button-works-during-call-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|call-flow-UI-Components-Mute-button-works-during-call-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="all-pages-verification.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="Mobile Safari" tests="40" failures="40" skipped="0" time="8.673" errors="0">
+<testcase name="All Pages Verification Suite › Home Page (/) › should load home page successfully" classname="all-pages-verification.spec.ts" time="0.234">
+<failure message="all-pages-verification.spec.ts:15:9 should load home page successfully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:15:9 › All Pages Verification Suite › Home Page (/) › should load home page successfully 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags" classname="all-pages-verification.spec.ts" time="0.358">
+<failure message="all-pages-verification.spec.ts:26:9 should have correct SEO meta tags" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:26:9 › All Pages Verification Suite › Home Page (/) › should have correct SEO meta tags 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows" classname="all-pages-verification.spec.ts" time="0.362">
+<failure message="all-pages-verification.spec.ts:42:9 should scroll properly if content overflows" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:42:9 › All Pages Verification Suite › Home Page (/) › should scroll properly if content overflows 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling" classname="all-pages-verification.spec.ts" time="0.272">
+<failure message="all-pages-verification.spec.ts:62:9 should have cyberpunk theme styling" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:62:9 › All Pages Verification Suite › Home Page (/) › should have cyberpunk theme styling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page" classname="all-pages-verification.spec.ts" time="0.221">
+<failure message="all-pages-verification.spec.ts:82:9 should load privacy policy page" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:82:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should load privacy policy page 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling" classname="all-pages-verification.spec.ts" time="0.195">
+<failure message="all-pages-verification.spec.ts:90:9 should have all privacy sections visible after scrolling" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:90:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have all privacy sections visible after scrolling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top" classname="all-pages-verification.spec.ts" time="0.163">
+<failure message="all-pages-verification.spec.ts:113:9 should scroll to bottom and back to top" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:113:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should scroll to bottom and back to top 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling" classname="all-pages-verification.spec.ts" time="0.178">
+<failure message="all-pages-verification.spec.ts:139:9 should have sticky header when scrolling" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:139:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have sticky header when scrolling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button" classname="all-pages-verification.spec.ts" time="0.136">
+<failure message="all-pages-verification.spec.ts:150:9 should navigate back to home via EXIT button" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:150:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back to home via EXIT button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button" classname="all-pages-verification.spec.ts" time="0.177">
+<failure message="all-pages-verification.spec.ts:160:9 should navigate back via RETURN_TO_SECURE_LINE button" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:160:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should navigate back via RETURN_TO_SECURE_LINE button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex" classname="all-pages-verification.spec.ts" time="0.193">
+<failure message="all-pages-verification.spec.ts:172:9 should have correct SEO meta tags with noindex" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:172:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have correct SEO meta tags with noindex 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling" classname="all-pages-verification.spec.ts" time="0.185">
+<failure message="all-pages-verification.spec.ts:180:9 should have custom scrollbar styling" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:180:9 › All Pages Verification Suite › Privacy Policy Page (/privacy) › should have custom scrollbar styling 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should load unauthorized component" classname="all-pages-verification.spec.ts" time="0.179">
+<failure message="all-pages-verification.spec.ts:199:9 should load unauthorized component" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:199:9 › All Pages Verification Suite › Login Page (/login) › should load unauthorized component 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button" classname="all-pages-verification.spec.ts" time="0.172">
+<failure message="all-pages-verification.spec.ts:206:9 should have AUTHENTICATE button" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:206:9 › All Pages Verification Suite › Login Page (/login) › should have AUTHENTICATE button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have blurred background effect" classname="all-pages-verification.spec.ts" time="0.198">
+<failure message="all-pages-verification.spec.ts:212:9 should have blurred background effect" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:212:9 › All Pages Verification Suite › Login Page (/login) › should have blurred background effect 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Login Page (/login) › should have noindex meta tag" classname="all-pages-verification.spec.ts" time="0.157">
+<failure message="all-pages-verification.spec.ts:220:9 should have noindex meta tag" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:220:9 › All Pages Verification Suite › Login Page (/login) › should have noindex meta tag 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes" classname="all-pages-verification.spec.ts" time="0.229">
+<failure message="all-pages-verification.spec.ts:233:9 should show 404 for invalid routes" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:233:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for invalid routes 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap)" classname="all-pages-verification.spec.ts" time="0.368">
+<failure message="all-pages-verification.spec.ts:240:9 should show 404 for /500 route (404 trap)" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:240:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /500 route (404 trap) 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap)" classname="all-pages-verification.spec.ts" time="0.21">
+<failure message="all-pages-verification.spec.ts:248:9 should show 404 for /403 route (404 trap)" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:248:9 › All Pages Verification Suite › 404 Not Found Page › should show 404 for /403 route (404 trap) 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have glitching text effect" classname="all-pages-verification.spec.ts" time="0.191">
+<failure message="all-pages-verification.spec.ts:254:9 should have glitching text effect" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:254:9 › All Pages Verification Suite › 404 Not Found Page › should have glitching text effect 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button" classname="all-pages-verification.spec.ts" time="0.188">
+<failure message="all-pages-verification.spec.ts:265:9 should have RETURN_TO_BASE button" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:265:9 › All Pages Verification Suite › 404 Not Found Page › should have RETURN_TO_BASE button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators" classname="all-pages-verification.spec.ts" time="0.343">
+<failure message="all-pages-verification.spec.ts:276:9 should have status bar with indicators" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:276:9 › All Pages Verification Suite › 404 Not Found Page › should have status bar with indicators 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated" classname="all-pages-verification.spec.ts" time="0.241">
+<failure message="all-pages-verification.spec.ts:289:9 should redirect /app to /login when not authenticated" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:289:9 › All Pages Verification Suite › Protected Routes › should redirect /app to /login when not authenticated 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated" classname="all-pages-verification.spec.ts" time="0.255">
+<failure message="all-pages-verification.spec.ts:302:9 should redirect /call/:id to /login when not authenticated" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:302:9 › All Pages Verification Suite › Protected Routes › should redirect /call/:id to /login when not authenticated 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated" classname="all-pages-verification.spec.ts" time="0.227">
+<failure message="all-pages-verification.spec.ts:312:9 should allow access to /app when authenticated" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:312:9 › All Pages Verification Suite › Protected Routes › should allow access to /app when authenticated 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy" classname="all-pages-verification.spec.ts" time="0.238">
+<failure message="all-pages-verification.spec.ts:334:9 should navigate from home to privacy" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:334:9 › All Pages Verification Suite › Navigation Between Pages › should navigate from home to privacy 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button" classname="all-pages-verification.spec.ts" time="0.232">
+<failure message="all-pages-verification.spec.ts:344:9 should navigate back using browser back button" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:344:9 › All Pages Verification Suite › Navigation Between Pages › should navigate back using browser back button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button" classname="all-pages-verification.spec.ts" time="0.162">
+<failure message="all-pages-verification.spec.ts:354:9 should navigate forward using browser forward button" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:354:9 › All Pages Verification Suite › Navigation Between Pages › should navigate forward using browser forward button 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on mobile viewport" classname="all-pages-verification.spec.ts" time="0.203">
+<failure message="all-pages-verification.spec.ts:371:9 should work on mobile viewport" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:371:9 › All Pages Verification Suite › Responsive Design › should work on mobile viewport 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on tablet viewport" classname="all-pages-verification.spec.ts" time="0.174">
+<failure message="all-pages-verification.spec.ts:385:9 should work on tablet viewport" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:385:9 › All Pages Verification Suite › Responsive Design › should work on tablet viewport 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Responsive Design › should work on desktop viewport" classname="all-pages-verification.spec.ts" time="0.21">
+<failure message="all-pages-verification.spec.ts:392:9 should work on desktop viewport" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:392:9 › All Pages Verification Suite › Responsive Design › should work on desktop viewport 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page" classname="all-pages-verification.spec.ts" time="0.222">
+<failure message="all-pages-verification.spec.ts:405:9 should have proper heading hierarchy on home page" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:405:9 › All Pages Verification Suite › Accessibility › should have proper heading hierarchy on home page 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have keyboard navigation support" classname="all-pages-verification.spec.ts" time="0.187">
+<failure message="all-pages-verification.spec.ts:412:9 should have keyboard navigation support" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:412:9 › All Pages Verification Suite › Accessibility › should have keyboard navigation support 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Accessibility › should have sufficient color contrast" classname="all-pages-verification.spec.ts" time="0.185">
+<failure message="all-pages-verification.spec.ts:423:9 should have sufficient color contrast" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:423:9 › All Pages Verification Suite › Accessibility › should have sufficient color contrast 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should load home page in reasonable time" classname="all-pages-verification.spec.ts" time="0.232">
+<failure message="all-pages-verification.spec.ts:440:9 should load home page in reasonable time" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:440:9 › All Pages Verification Suite › Performance › should load home page in reasonable time 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Performance › should have smooth scrolling on privacy page" classname="all-pages-verification.spec.ts" time="0.153">
+<failure message="all-pages-verification.spec.ts:449:9 should have smooth scrolling on privacy page" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:449:9 › All Pages Verification Suite › Performance › should have smooth scrolling on privacy page 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages" classname="all-pages-verification.spec.ts" time="0.189">
+<failure message="all-pages-verification.spec.ts:471:9 should have consistent theme across all pages" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:471:9 › All Pages Verification Suite › Cyberpunk Theme Consistency › should have consistent theme across all pages 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme" classname="all-pages-verification.spec.ts" time="0.238">
+<failure message="all-pages-verification.spec.ts:489:9 should have neon green color scheme" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:489:9 › All Pages Verification Suite › Cyberpunk Theme Consistency › should have neon green color scheme 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should handle network errors gracefully" classname="all-pages-verification.spec.ts" time="0.183">
+<failure message="all-pages-verification.spec.ts:503:9 should handle network errors gracefully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:503:9 › All Pages Verification Suite › Error Handling › should handle network errors gracefully 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="All Pages Verification Suite › Error Handling › should recover from navigation errors" classname="all-pages-verification.spec.ts" time="0.233">
+<failure message="all-pages-verification.spec.ts:514:9 should recover from navigation errors" type="FAILURE">
+<![CDATA[  [Mobile Safari] › all-pages-verification.spec.ts:514:9 › All Pages Verification Suite › Error Handling › should recover from navigation errors 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="call-flow.spec.ts" timestamp="2025-12-25T07:44:20.909Z" hostname="Mobile Safari" tests="8" failures="8" skipped="0" time="1.714" errors="0">
+<testcase name="Complete Call Flow › User receives extension on connection" classname="call-flow.spec.ts" time="0.248">
+<failure message="call-flow.spec.ts:27:7 User receives extension on connection" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:27:7 › Complete Call Flow › User receives extension on connection 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Two users can establish a call" classname="call-flow.spec.ts" time="0.215">
+<failure message="call-flow.spec.ts:38:7 Two users can establish a call" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:38:7 › Complete Call Flow › Two users can establish a call ───
+
+    Error: browserContext.newPage: Unknown permission: microphone
+
+      41 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+      42 |     
+    > 43 |     const userA = await context1.newPage();
+         |                                  ^
+      44 |     const userB = await context2.newPage();
+      45 |
+      46 |     // Connect both users
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:43:34
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › User can reject incoming call" classname="call-flow.spec.ts" time="0.148">
+<failure message="call-flow.spec.ts:96:7 User can reject incoming call" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:96:7 › Complete Call Flow › User can reject incoming call ────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+
+       98 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+       99 |     
+    > 100 |     const userA = await context1.newPage();
+          |                                  ^
+      101 |     const userB = await context2.newPage();
+      102 |
+      103 |     const extensionA = await connectUserAndGetExtension(userA);
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:100:34
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Handles microphone permission denial gracefully" classname="call-flow.spec.ts" time="0.245">
+<failure message="call-flow.spec.ts:129:7 Handles microphone permission denial gracefully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:129:7 › Complete Call Flow › Handles microphone permission denial gracefully 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Call log displays correctly" classname="call-flow.spec.ts" time="0.271">
+<failure message="call-flow.spec.ts:149:7 Call log displays correctly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:149:7 › Complete Call Flow › Call log displays correctly ─────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="Complete Call Flow › Connection status updates correctly" classname="call-flow.spec.ts" time="0.25">
+<failure message="call-flow.spec.ts:167:7 Connection status updates correctly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:167:7 › Complete Call Flow › Connection status updates correctly 
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="UI Components › Dial pad works correctly" classname="call-flow.spec.ts" time="0.151">
+<failure message="call-flow.spec.ts:189:7 Dial pad works correctly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:189:7 › UI Components › Dial pad works correctly ─────────────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+]]>
+</failure>
+</testcase>
+<testcase name="UI Components › Mute button works during call" classname="call-flow.spec.ts" time="0.186">
+<failure message="call-flow.spec.ts:205:7 Mute button works during call" type="FAILURE">
+<![CDATA[  [Mobile Safari] › call-flow.spec.ts:205:7 › UI Components › Mute button works during call ────────
+
+    Error: browserContext.newPage: Unknown permission: microphone
+
+      207 |     const context2 = await browser.newContext({ permissions: ['microphone'] });
+      208 |     
+    > 209 |     const userA = await context1.newPage();
+          |                                  ^
+      210 |     const userB = await context2.newPage();
+      211 |
+      212 |     const extensionA = await connectUserAndGetExtension(userA);
+        at C:\Users\Administrator\Downloads\Node-Tx-Manager\tests\e2e\call-flow.spec.ts:209:34
+]]>
+</failure>
+</testcase>
+</testsuite>
 </testsuites>
