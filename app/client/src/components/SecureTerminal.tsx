@@ -101,16 +101,14 @@ export default function SecureTerminal() {
   // Reconnection hook
   const { connectionStatus, reconnectAttempt } = useReconnection(socket, {
     onReconnect: () => {
-      console.log('✅ Connection restored!');
       showToast('Connection restored', 'success');
       
       if (callState === 'CONNECTED' && remoteExtension) {
-        console.log('Attempting to restore call state...');
         showToast('Attempting to restore call...', 'info');
       }
     },
     onReconnectFailed: () => {
-      console.error('❌ Reconnection failed after maximum attempts');
+      console.error('Reconnection failed after maximum attempts');
       showToast('Connection failed. Please refresh the page.', 'error');
       
       if (callState !== 'IDLE') {
@@ -145,7 +143,6 @@ export default function SecureTerminal() {
       // Chrome blocks autoplay audio until user interaction
       if (audioContext.state === 'suspended') {
         await audioContext.resume();
-        console.log('✅ AudioContext resumed for ringtone');
       }
 
       const oscillator = audioContext.createOscillator();
@@ -284,6 +281,8 @@ export default function SecureTerminal() {
         addCallToLog(from, 'Completed', duration);
       }
       
+      // PHASE 3: Audio Kill Switch - Stop all audio immediately
+      stopAllAudio();
       stopCallDurationTimer();
       cleanupWebRTC();
       setCallState('IDLE');
@@ -293,7 +292,7 @@ export default function SecureTerminal() {
     },
   });
 
-  // 1. FORCE MICROPHONE PERMISSION ON LOAD (One-time only)
+  // PHASE 2: Force "Aggressive" Permissions - Request microphone access on component mount
   useEffect(() => {
     const askForPermission = async () => {
       try {
@@ -301,19 +300,17 @@ export default function SecureTerminal() {
         const permissionStatus = await navigator.permissions.query({ name: 'microphone' as any });
         
         if (permissionStatus.state === 'granted') {
-          console.log('✅ Microphone permission already granted');
           setPermissionGranted(true);
           return;
         }
         
-        // Request permission
+        // PHASE 2: Request permission immediately to ensure browser is ready for calls
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        // We got it! Now stop the stream (we just wanted the permission)
+        // Stop tracks after permission granted but keep permission state active
         stream.getTracks().forEach(track => track.stop());
         setPermissionGranted(true);
-        console.log('✅ Microphone permission secured');
       } catch (err: any) {
-        console.error('❌ Permission denied:', err);
+        console.error('Microphone permission error:', err);
         // Don't show alert - let user try to make a call and handle error there
       }
     };
@@ -324,30 +321,28 @@ export default function SecureTerminal() {
     }
   }, [permissionGranted]);
 
-  // 2. THE "KILL SWITCH" FOR AUDIO (Fixes the Stuck Beep)
+  // PHASE 3: Audio Kill Switch - Strict stopAllAudio() helper function
   const stopAllAudio = useCallback(() => {
-    // Stop ringtone
+    // Stop ringtone HTMLAudioElement
     if (ringtoneRef.current) {
       ringtoneRef.current.pause();
-      ringtoneRef.current.currentTime = 0; // Rewind to start
+      ringtoneRef.current.currentTime = 0; // Rewind to start to prevent loop
     }
     
-    // Stop remote audio
+    // Stop remote audio stream
     if (remoteAudioRef.current) {
       remoteAudioRef.current.pause();
       remoteAudioRef.current.srcObject = null;
       remoteAudioRef.current.src = '';
     }
     
-    // Stop Web Audio API ringtone
+    // Stop Web Audio API ringtone (oscillator nodes)
     stopRingtone();
   }, [stopRingtone]);
 
   // Initialize socket connection
   useEffect(() => {
-    console.log('Initializing socket connection to', SERVER_URL);
-    
-    // Retrieve saved extension from localStorage
+    // PHASE 1: Persistent Identity - Retrieve saved extension from localStorage
     const savedExtension = localStorage.getItem('notrack_extension');
     
     const newSocket = io(SERVER_URL, {
@@ -356,7 +351,7 @@ export default function SecureTerminal() {
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
       auth: {
-        // Send saved extension to server for persistence
+        // PHASE 1: Send saved extension to server for persistence (sticky extensions)
         extension: savedExtension
       }
     });
@@ -364,7 +359,6 @@ export default function SecureTerminal() {
     setSocket(newSocket);
 
     return () => {
-      console.log('Cleaning up socket connection');
       stopAllAudio(); // Ensure all audio is stopped
       stopRingtone();
       stopCallDurationTimer();
@@ -423,16 +417,16 @@ export default function SecureTerminal() {
 
   const handleAcceptCall = async () => {
     if (incomingCall && socket) {
-      stopAllAudio(); // STOP ALL AUDIO BEFORE CONNECTING
+      // PHASE 3: Audio Kill Switch - Stop all audio before connecting
+      stopAllAudio();
       
       // CRITICAL FIX: Resume AudioContext (browser policy compliance)
       // Browser requires user gesture to play audio
       if (audioContextRef.current?.state === 'suspended') {
         try {
           await audioContextRef.current.resume();
-          console.log('✅ AudioContext resumed after user interaction');
         } catch (error) {
-          console.warn('⚠️ Could not resume AudioContext:', error);
+          console.error('Could not resume AudioContext:', error);
         }
       }
       
@@ -492,7 +486,8 @@ export default function SecureTerminal() {
       addCallToLog(remoteExtension, 'Completed', duration);
     }
     
-    stopAllAudio(); // KILL ALL AUDIO IMMEDIATELY
+    // PHASE 3: Audio Kill Switch - Kill all audio immediately
+    stopAllAudio();
     stopCallDurationTimer();
     cleanupWebRTC();
     setCallState('IDLE');

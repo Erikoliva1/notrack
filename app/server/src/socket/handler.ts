@@ -50,14 +50,7 @@ async function generateExtensionNumber(): Promise<string> {
  */
 export function setupSocketHandlers(io: Server): void {
   io.on('connection', async (socket: Socket) => {
-    console.log('════════════════════════════════════════════════');
-    console.log(`[${new Date().toISOString()}] 🔌 New connection`);
-    console.log(`   Socket ID: ${socket.id}`);
-    console.log(`   User ID: ${socket.data.userId || 'N/A'}`);
-    console.log(`   Username: ${socket.data.username || 'N/A'}`);
-
-    // Generate and assign unique extension number
-    // Check if client requested a specific extension (persistent ID)
+    // PHASE 1: Persistent Identity - Handle extension assignment with sticky IDs
     try {
       const requestedExtension = socket.handshake.auth?.extension;
       
@@ -71,25 +64,19 @@ export function setupSocketHandlers(io: Server): void {
         const isAvailable = !(await Redis.isExtensionInUse(requestedExtension));
         
         if (isAvailable) {
+          // PHASE 1: Assign the persistent ID requested by the client
           extensionNumber = requestedExtension;
-          console.log(`   ✅ Persistent ID requested and assigned: ${extensionNumber}`);
         } else {
           // Extension is taken, generate a new one
           extensionNumber = await generateExtensionNumber();
-          console.log(`   ⚠️  Requested extension ${requestedExtension} is taken, assigned: ${extensionNumber}`);
         }
       } else {
         // No valid extension requested, generate a new one
         extensionNumber = await generateExtensionNumber();
-        console.log(`   Extension: ${extensionNumber}`);
       }
       
       // Store mappings in Redis
       await Redis.setExtensionMapping(extensionNumber, socket.id);
-
-      const activeUsers = await Redis.getActiveUsersCount();
-      console.log(`   Total Users: ${activeUsers}`);
-      console.log('════════════════════════════════════════════════');
 
       // Send extension number to client
       socket.emit('extension-assigned', { extensionNumber });
@@ -116,17 +103,12 @@ export function setupSocketHandlers(io: Server): void {
       
       // Rate limiting check (Token Bucket Algorithm)
       if (!checkRateLimit(socket.id, 'join')) {
-        console.warn(`⚠️  Rate limit exceeded for socket ${socket.id} on 'join'`);
         socket.emit('error', { 
           message: 'Too many requests. Please slow down.',
           code: 'RATE_LIMIT_EXCEEDED'
         });
         return;
       }
-      
-      const extensionNumber = await Redis.getExtensionBySocketId(socket.id);
-      console.log(`[${new Date().toISOString()}] 📞 JOIN event`);
-      console.log(`   Extension: ${extensionNumber}`);
     });
 
     /**
@@ -139,7 +121,6 @@ export function setupSocketHandlers(io: Server): void {
       // SECURITY: Rate limiting check (Token Bucket Algorithm)
       // Allows 5 calls per second with burst capacity of 10
       if (!checkRateLimit(socket.id, 'call-user')) {
-        console.warn(`⚠️  Rate limit exceeded for socket ${socket.id} on 'call-user'`);
         socket.emit('error', { 
           message: 'Too many call attempts. Please slow down.',
           code: 'RATE_LIMIT_EXCEEDED'
@@ -150,7 +131,6 @@ export function setupSocketHandlers(io: Server): void {
       // SECURITY: Sanitize and validate input (XSS, injection prevention)
       const secureData = secureSocketData('call-user', data);
       if (!secureData) {
-        console.warn(`⚠️  Security check failed for call-user from socket ${socket.id}`);
         socket.emit('error', { 
           message: 'Invalid request data',
           code: 'INVALID_DATA'
@@ -161,7 +141,6 @@ export function setupSocketHandlers(io: Server): void {
       // Additional validation
       const validation = validateSocketData('call-user', secureData);
       if (!validation.valid) {
-        console.log(`   ❌ Validation failed: ${validation.error}`);
         socket.emit('error', { message: validation.error });
         return;
       }
@@ -169,14 +148,9 @@ export function setupSocketHandlers(io: Server): void {
       const callerExtension = await Redis.getExtensionBySocketId(socket.id);
       const { targetExtension, offer } = secureData;
 
-      console.log(`[${new Date().toISOString()}] 📞 CALL-USER event`);
-      console.log(`   From: ${callerExtension}`);
-      console.log(`   To: ${targetExtension}`);
-
       const targetSocketId = await Redis.getSocketIdByExtension(targetExtension);
 
       if (!targetSocketId) {
-        console.log(`   ❌ Target extension not found or offline`);
         socket.emit('call-failed', { message: 'User not found or offline' });
         return;
       }
@@ -186,8 +160,6 @@ export function setupSocketHandlers(io: Server): void {
         callerExtension,
         offer
       });
-
-      console.log(`   ✅ Call forwarded to ${targetExtension}`);
     });
 
     /**
@@ -200,7 +172,6 @@ export function setupSocketHandlers(io: Server): void {
       // SECURITY: Rate limiting check (Token Bucket Algorithm)
       // Allows 3 answers per second with burst capacity of 6
       if (!checkRateLimit(socket.id, 'answer-call')) {
-        console.warn(`⚠️  Rate limit exceeded for socket ${socket.id} on 'answer-call'`);
         socket.emit('error', { 
           message: 'Too many requests. Please slow down.',
           code: 'RATE_LIMIT_EXCEEDED'
@@ -211,7 +182,6 @@ export function setupSocketHandlers(io: Server): void {
       // SECURITY: Sanitize and validate input
       const secureData = secureSocketData('answer-call', data);
       if (!secureData) {
-        console.warn(`⚠️  Security check failed for answer-call from socket ${socket.id}`);
         socket.emit('error', { 
           message: 'Invalid request data',
           code: 'INVALID_DATA'
@@ -222,7 +192,6 @@ export function setupSocketHandlers(io: Server): void {
       // Additional validation
       const validation = validateSocketData('answer-call', secureData);
       if (!validation.valid) {
-        console.log(`   ❌ Validation failed: ${validation.error}`);
         socket.emit('error', { message: validation.error });
         return;
       }
@@ -230,14 +199,9 @@ export function setupSocketHandlers(io: Server): void {
       const calleeExtension = await Redis.getExtensionBySocketId(socket.id);
       const { callerExtension, answer } = secureData;
 
-      console.log(`[${new Date().toISOString()}] ✅ ANSWER-CALL event`);
-      console.log(`   Callee: ${calleeExtension}`);
-      console.log(`   Caller: ${callerExtension}`);
-
       const callerSocketId = await Redis.getSocketIdByExtension(callerExtension);
 
       if (!callerSocketId) {
-        console.log(`   ❌ Caller not found`);
         socket.emit('error', { message: 'Caller not found' });
         return;
       }
@@ -247,8 +211,6 @@ export function setupSocketHandlers(io: Server): void {
         calleeExtension,
         answer
       });
-
-      console.log(`   ✅ Answer forwarded to ${callerExtension}`);
     });
 
     /**
@@ -262,7 +224,6 @@ export function setupSocketHandlers(io: Server): void {
       // Allows 20 ICE candidates per second with burst capacity of 40
       // Higher limit because ICE candidates are sent frequently
       if (!checkRateLimit(socket.id, 'ice-candidate')) {
-        console.warn(`⚠️  Rate limit exceeded for socket ${socket.id} on 'ice-candidate'`);
         socket.emit('error', { 
           message: 'Too many ICE candidates. Please slow down.',
           code: 'RATE_LIMIT_EXCEEDED'
@@ -273,7 +234,6 @@ export function setupSocketHandlers(io: Server): void {
       // SECURITY: Sanitize and validate input
       const secureData = secureSocketData('ice-candidate', data);
       if (!secureData) {
-        console.warn(`⚠️  Security check failed for ice-candidate from socket ${socket.id}`);
         socket.emit('error', { 
           message: 'Invalid ICE candidate data',
           code: 'INVALID_DATA'
@@ -284,7 +244,6 @@ export function setupSocketHandlers(io: Server): void {
       // Additional validation
       const validation = validateSocketData('ice-candidate', secureData);
       if (!validation.valid) {
-        console.log(`   ❌ Validation failed: ${validation.error}`);
         socket.emit('error', { message: validation.error });
         return;
       }
@@ -292,14 +251,9 @@ export function setupSocketHandlers(io: Server): void {
       const senderExtension = await Redis.getExtensionBySocketId(socket.id);
       const { targetExtension, candidate } = secureData;
 
-      console.log(`[${new Date().toISOString()}] 🧊 ICE-CANDIDATE event`);
-      console.log(`   From: ${senderExtension}`);
-      console.log(`   To: ${targetExtension}`);
-
       const targetSocketId = await Redis.getSocketIdByExtension(targetExtension);
 
       if (!targetSocketId) {
-        console.log(`   ❌ Target not found`);
         return;
       }
 
@@ -308,8 +262,6 @@ export function setupSocketHandlers(io: Server): void {
         senderExtension,
         candidate
       });
-
-      console.log(`   ✅ ICE candidate forwarded`);
     });
 
     /**
@@ -320,14 +272,12 @@ export function setupSocketHandlers(io: Server): void {
       
       // SECURITY: Rate limiting
       if (!checkRateLimit(socket.id, 'hangup')) {
-        console.warn(`⚠️  Rate limit exceeded for socket ${socket.id} on 'hangup'`);
         return; // Silently ignore (less critical than call initiation)
       }
       
       // Validate input
       const validation = validateSocketData('hangup', data);
       if (!validation.valid) {
-        console.log(`   ❌ Validation failed: ${validation.error}`);
         socket.emit('error', { message: validation.error });
         return;
       }
@@ -335,17 +285,12 @@ export function setupSocketHandlers(io: Server): void {
       const callerExtension = await Redis.getExtensionBySocketId(socket.id);
       const { targetNumber } = data;
 
-      console.log(`[${new Date().toISOString()}] 📴 HANGUP event`);
-      console.log(`   From: ${callerExtension}`);
-      console.log(`   To: ${targetNumber}`);
-
       const targetSocketId = await Redis.getSocketIdByExtension(targetNumber);
 
       if (targetSocketId) {
         io.to(targetSocketId).emit('hangup', {
           from: callerExtension
         });
-        console.log(`   ✅ Hangup forwarded to ${targetNumber}`);
       }
     });
 
@@ -357,14 +302,12 @@ export function setupSocketHandlers(io: Server): void {
       
       // SECURITY: Rate limiting
       if (!checkRateLimit(socket.id, 'reject')) {
-        console.warn(`⚠️  Rate limit exceeded for socket ${socket.id} on 'reject'`);
         return;
       }
       
       // Validate input
       const validation = validateSocketData('reject', data);
       if (!validation.valid) {
-        console.log(`   ❌ Validation failed: ${validation.error}`);
         socket.emit('error', { message: validation.error });
         return;
       }
@@ -372,17 +315,12 @@ export function setupSocketHandlers(io: Server): void {
       const calleeExtension = await Redis.getExtensionBySocketId(socket.id);
       const { callerExtension } = data;
 
-      console.log(`[${new Date().toISOString()}] ❌ REJECT event`);
-      console.log(`   From: ${calleeExtension}`);
-      console.log(`   To: ${callerExtension}`);
-
       const callerSocketId = await Redis.getSocketIdByExtension(callerExtension);
 
       if (callerSocketId) {
         io.to(callerSocketId).emit('call-failed', {
           message: 'Call rejected by user'
         });
-        console.log(`   ✅ Rejection forwarded to ${callerExtension}`);
       }
     });
 

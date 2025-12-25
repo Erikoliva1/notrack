@@ -32,31 +32,25 @@ export function useSignalProtocol(
   useEffect(() => {
     if (!socket) return;
 
-    console.log('[SignalProtocol] Registering event handlers');
-
     // Extension Assignment
     const handleExtensionAssigned = (data: { extensionNumber: string }) => {
-      console.log('[SignalProtocol] Extension assigned:', data.extensionNumber);
-      // Save the extension to localStorage for persistence
+      // PHASE 1: Persistent Identity - Save extension to localStorage for persistence
       localStorage.setItem('notrack_extension', data.extensionNumber);
       callbacksRef.current.onExtensionAssigned(data.extensionNumber);
     };
 
     // Incoming Call
     const handleIncomingCall = (data: { callerExtension: string; offer: any }) => {
-      console.log('[SignalProtocol] Incoming call from:', data.callerExtension);
       callbacksRef.current.onIncomingCall(data);
     };
 
     // Call Answered
     const handleCallAnswered = (data: { calleeExtension: string; answer: any }) => {
-      console.log('[SignalProtocol] Call answered by:', data.calleeExtension);
       callbacksRef.current.onCallAnswered(data);
     };
 
     // ICE Candidate
     const handleIceCandidate = (data: { senderExtension: string; candidate: any }) => {
-      console.log('[SignalProtocol] ICE candidate from:', data.senderExtension);
       callbacksRef.current.onIceCandidate(data);
     };
 
@@ -74,7 +68,6 @@ export function useSignalProtocol(
 
     // Hangup
     const handleHangup = (data: { from: string }) => {
-      console.log('[SignalProtocol] Hangup from:', data.from);
       callbacksRef.current.onHangup(data.from);
     };
 
@@ -89,7 +82,6 @@ export function useSignalProtocol(
 
     // Cleanup function
     return () => {
-      console.log('[SignalProtocol] Cleaning up event handlers');
       socket.off('extension-assigned', handleExtensionAssigned);
       socket.off('incoming-call', handleIncomingCall);
       socket.off('call-answered', handleCallAnswered);
